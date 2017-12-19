@@ -169,6 +169,7 @@ function Button(id, num) {
                 $('#history img').attr('src', 'images/ui/close.svg');
                 $('#Body').find('.barBg').css('background', bgColor())
                 $('#' + id).find('input').prop('checked', true);
+                $('#wrap').css('height', 'calc(100% - ' + ($('.navbar-fixed').height() / 10 - 0.1) + 'rem)')
             } else {
                 $('#' + id + 'Header,#' + id + 'Body').css("display", "none");
                 $('#' + localStorage.getItem('tab') + 'Header,#' + localStorage.getItem('tab') + 'Body').fadeIn(150);
