@@ -1,0 +1,160 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>[FFXIV] HAERUSKIN 2</title>
+    <link rel="stylesheet" type="text/css" href="css/Haeru.css">
+</head>
+<body>
+    <div id="zone">
+        <div class="navbar-fixed">
+            <nav>
+                <div id="menu" onclick="Button(this.id)">
+                    <input type="checkbox" checked="true" />
+                    <img src="images/ui/menu.svg" />
+                </div>
+                <div id="data">
+                    <div></div>
+                </div>
+                <div id="end" onclick="Button(this.id)">
+                    <img src="images/ui/timer.svg" />
+                </div>
+                <div id="history" onclick="viewTab(this.id, 0); Button(this.id)">
+                    <input type="checkbox" />
+                    <img src="images/ui/history.svg" />
+                </div>
+            </nav>
+            <div id="Header">
+                <div id="DPSHeader">
+                    <div id="DPSoldHeader"></div>
+                </div>
+                <div id="HPSHeader">
+                    <div id="HPSoldHeader"></div>
+                </div>
+                <div id="BMHeader">
+                    <div id="BMoldHeader"></div>
+                </div>
+                <div id="historyHeader" style="display: none;">
+                    <table class="tableheader">
+                        <tr>
+                            <td class="cell_0">View</Td>
+                            <td class="cell_1">Name</Td>
+                            <td class="cell_5">Time</Td>
+                            <td class="cell_2">RDPS</Td>
+                            <td class="cell_2">RHPS</Td>
+                            <td class="cell_5">Count</Td>
+                        </tr>
+                    </table>
+                </div>
+                <div id="editHeader" style="display: none;">
+                    <table class="tableheader">
+                        <tr>
+                            <td class="cell_1">
+                            </Td>
+                            <td class="cell_2">DPS</Td>
+                            <td class="cell_2">HPS</Td>
+                            <td class="cell_2">Bookmark</Td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div id="wrap">
+            <table id="menuTable">
+                <tr>
+                    <td id="DPS" onclick="viewTab(this.id, 0)">
+                        <img/>
+                        <br>
+                        <div></div>
+                    </td>
+                    <td id="HPS" onclick="viewTab(this.id, 0)">
+                        <img/>
+                        <br>
+                        <div></div>
+                    </td>
+                    <td id="BM" onclick="viewTab(this.id, 0)">
+                        <img/>
+                        <br>
+                        <div></div>
+                    </td>
+                    <td id="edit" onclick="viewTab(this.id, 0)">
+                        <img/>
+                        <br>
+                        <div></div>
+                    </td>
+                </tr>
+                <tr>
+                    <td id="size" onclick="Button(this.id, 8)">
+                        <img/>
+                        <br>
+                        <div></div>
+                    </td>
+                    <td id="thema" onclick="Button(this.id, 5)">
+                        <img/>
+                        <br>
+                        <div></div>
+                    </td>
+                    <td id="graph" onclick="Button(this.id, 3)">
+                        <img/>
+                        <br>
+                        <div></div>
+                    </td>
+                    <td id="opacity" onclick="Button(this.id, 5)">
+                        <img/>
+                        <br>
+                        <div></div>
+                    </td>
+                </tr>
+                <tr>
+                    <td id="lang" onclick="Button(this.id)">
+                        <input type="checkbox" />
+                        <img/>
+                        <br>
+                        <div></div>
+                    </td>
+                    <td id="number" onclick="Button(this.id)">
+                        <input type="checkbox" />
+                        <img/>
+                        <br>
+                        <div></div>
+                    </td>
+                    <td id="pets" onclick="Button(this.id)">
+                        <input type="checkbox" />
+                        <img/>
+                        <br>
+                        <div></div>
+                    </td>
+                    <td id="name" onclick="Button(this.id)">
+                        <input type="checkbox" />
+                        <img/>
+                        <br>
+                        <div></div>
+                    </td>
+                </tr>
+            </table>
+            <div id="Body">
+                <div id="DPSBody">
+                    <div id="DPSoldBody"></div>
+                </div>
+                <div id="HPSBody">
+                    <div id="HPSoldBody"></div>
+                </div>
+                <div id="BMBody">
+                    <div id="BMoldBody"></div>
+                </div>
+                <div id="historyBody">
+                    <div id="historyoldBody"></div>
+                </div>
+                <div id="editBody">
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="js/jquery-2.1.1.min.js" type="text/javascript"></script>
+    <script src="js/HAERU_CORE.js" type="text/javascript"></script>
+    <script src="js/lang.js" type="text/javascript"></script>
+    <script src="js/Haeru.js" type="text/javascript"></script>
+
+</body>
+
+
+</html>
