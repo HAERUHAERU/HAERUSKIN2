@@ -179,7 +179,7 @@ function putPetOwner(d) {
             nameList.push(d[i].Haeru.Name);
     }
     for (var i in d) {
-        if (d[i].Haeru.petOwner == "pet") {
+        if (d[i].Haeru.petOwner != "") {
             if (nameList.indexOf(d[i].Haeru.Name.split("(")[1].replace(")", "")) > -1) {
                 d[i].Haeru.petOwner = d[i].Haeru.Name.split("(")[1].replace(")", "");
             } else {
