@@ -144,7 +144,7 @@ function HaeruData(d, e) {
     } else {
         this.MaxHitVal = parseInt(d.maxhit.split('-')[1].replace(/[^\d]+/g, '')).nanFix();
         this.MaxHitStr = d.maxhit.split('-')[0];
-        if(this.MaxHitStr == "Unknown" && this.Job == "MCH" && localStorage.getItem("lang") == "kr")
+        if(this.MaxHitStr == "Unknown" && this.Class == "MCH" && localStorage.getItem("lang") == "kr")
             this.MaxHitStr = "급속 출력"
     }
     this.DTaken = parseInt(d.damagetaken).nanFix();
