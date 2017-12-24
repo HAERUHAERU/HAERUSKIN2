@@ -7,6 +7,7 @@ Number.prototype.nanFix = function () {
 };
 
 function LastHaeruData(e, sortkey) {
+    this.duration = e.Encounter.duration; 
     this.title = e.Encounter.title;
     this.zone = e.Encounter.CurrentZoneName;
     this.RDPS = parseInt(e.Encounter.ENCDPS).nanFix();
@@ -200,7 +201,7 @@ function mergedData(p, o, e) {
     o.Last30 = parseFloat(o.Last30).nanFix() + parseFloat(p.Last30).nanFix();
     o.Last60 = parseFloat(o.Last60).nanFix() + parseFloat(p.Last60).nanFix();
     o.Last180 = parseFloat(o.Last180).nanFix() + parseFloat(p.Last180).nanFix();
-    o['D%'] = parseFloat(o.Damage / e.damage * 100).nanFix();
+    o.Dper = parseFloat(o.Damage / e.damage * 100).nanFix();
     o.Swing = parseInt(o.Swing + p.Swing).nanFix();
     o.Miss = parseInt(o.Miss + p.Miss).nanFix();
     o.ACC = parseFloat(o.Miss / o.Swing * 100).nanFix();
@@ -223,7 +224,7 @@ function mergedData(p, o, e) {
 
     o.Healed = parseInt(o.Healed + p.Healed).nanFix();
     o.HPS = parseFloat(o.Healed / e.DURATION).nanFix();
-    o['H%'] = parseFloat((o.Healed / e.healed) * 100).nanFix();
+    o.Hper = parseFloat((o.Healed / e.healed) * 100).nanFix();
     o.DShield = parseInt(o.DShield + p.DShield).nanFix();
     o.OverHeal = parseInt(o.OverHeal + p.OverHeal).nanFix();
     o.EffHeal = parseInt(o.Healed).nanFix() - parseInt(o.OverHeal).nanFix() - parseInt(o.DShield).nanFix();
