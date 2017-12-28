@@ -83,21 +83,25 @@ function HaeruData(d, e) {
         if (smnPets.indexOf(d.name.split(" ")[0]) > -1 || smnPets.indexOf(d.name.split(" ")[1]) > -1) {
             this.Job = "AVA";
             this.Class = "SMN";
+            if(matches != null)
             this.petOwner = matches[1];
         }
         else if (schPets.indexOf(d.name.split(" ")[0]) > -1) {
             this.Job = "AVA";
             this.Class = "SCH";
+            if(matches != null)
             this.petOwner = matches[1];
         }
         else if (mchPets.indexOf(d.name.split(" ")[0]) > -1) {
             this.Job = "AVA";
             this.Class = "MCH";
+            if(matches != null)
             this.petOwner = matches[1];
         }
         else if (schPets.indexOf(d.name.split(" ")[0]) == -1 && mchPets.indexOf(d.name.split(" ")[0]) == -1 && smnPets.indexOf(d.name.split(" ")[0]) == -1 && smnPets.indexOf(d.name.split(" ")[1]) == -1 && d.name.indexOf("(") > -1) {
             this.Job = "CBO";
             this.Class = "CBO";
+            if(matches != null)
             this.petOwner = matches[1];
         }
         else if (d.name == "Limit Break") {
