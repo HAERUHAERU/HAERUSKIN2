@@ -353,7 +353,7 @@ lang = {
         HTaken:{
             title:"H.Taken",
             ex:{
-                kr:'받은 회복량',
+                kr:'받은 치유량',
                 en:'The amount of healing this combatant received.'
             },
             DPS:false,
@@ -383,7 +383,7 @@ lang = {
         HPS:{
             title:"HPS",
             ex:{
-                kr:'초당 회복량 (Time 기준, 공식)',
+                kr:'초당 치유량 (Time 기준, 공식)',
                 en:'The healing total of the combatant divided by the duration of the encounter.'
             },
             DPS:'block',
@@ -393,7 +393,7 @@ lang = {
         Hper:{
             title:"H%",
             ex:{
-                kr:'전체 회복량 중 내가 기여한 회복량 (%)',
+                kr:'전체 치유량 중 내가 기여한 치유량 (%)',
                 en:'The value represents the percent share of all healing done by allies in this encounter.'
             },
             DPS:'block',
@@ -403,7 +403,7 @@ lang = {
         Healed:{
             title:"Healed",
             ex:{
-                kr:'회복량',
+                kr:'치유량',
                 en:'The amount of healing.'
             },
             DPS:'block',
@@ -413,7 +413,7 @@ lang = {
         EffHeal:{
             title:"Eff.Heal",
             ex:{
-                kr:'회복 유효량',
+                kr:'유효 치유량',
                 en:'The amount of healing except for Overheal and D.Shield value.'
             },
             DPS:'block',
@@ -433,7 +433,7 @@ lang = {
         OverHeal:{
             title:"OverHeal",
             ex:{
-                kr:'회복 초과량',
+                kr:'초과 치유량',
                 en:'The amount of healing that made flood over 100% of health.'
             },
             DPS:'block',
@@ -443,7 +443,7 @@ lang = {
         OHEAL:{
             title:"O.HEAL",
             ex:{
-                kr:'회복 초과율 (%)',
+                kr:'치유 초과율 (%)',
                 en:'The percentage of heals above target\'s Max HP.'
             },
             DPS:'block',
@@ -453,7 +453,7 @@ lang = {
         Heal:{
             title:"Heal",
             ex:{
-                kr:'회복 횟수 (도트, 기술 시전 취소 포함)',
+                kr:'치유 횟수 (도트, 기술 시전 취소 포함)',
                 en:'The number of heals from this combatant.'
             },
             DPS:'block',
@@ -463,7 +463,7 @@ lang = {
         CHeal:{
             title:"C.Heal",
             ex:{
-                kr:'회복 극대화 횟수',
+                kr:'치유 극대화 횟수',
                 en:'The number of heals that were critical.'
             },
             DPS:'block',
@@ -473,7 +473,7 @@ lang = {
         CHEAL:{
             title:"C.HEAL",
             ex:{
-                kr:'회복 극대화율 (%)',
+                kr:'치유 극대화율 (%)',
                 en:'The percentage of heals that were critical.'
             },
             DPS:'block',
@@ -483,7 +483,7 @@ lang = {
         MaxHeal:{
             title:"MaxHeal",
             ex:{
-                kr:'최대 회복 기술',
+                kr:'최대 치유 기술',
                 en:'The highest single healing amount.'
             },
             DPS:'block',
