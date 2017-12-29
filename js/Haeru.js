@@ -83,6 +83,7 @@ function viewTab(val, flag) {
         $('#menu').find('input').prop('checked', true)
         Button('menu', 0);
         $('#menu img').attr('src', 'images/ui/close.svg');
+        $('#wrap').css('height', 'calc(100% - ' + ($('.navbar-fixed').height() / 10 - 0.1) + 'rem)')
     } else {
         $('#menu').find('input').prop('checked', true)
         Button('menu', 0);
