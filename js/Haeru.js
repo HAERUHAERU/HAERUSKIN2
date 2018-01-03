@@ -105,7 +105,7 @@ function createEditTable() {
         var a = list[i]
         var div = '<div id="' + i + '"><table class="tablebody edit"><tr>' +
             '<td class="cell_1"><div class="title">' + a.title + '</div>' +
-            '<div class="ex">' + a.ex[langFlag] + '</div></td>' +
+            '<div class="ex">' + lang.elements[i].ex[langFlag] + '</div></td>' +
             '<td class="cell_2" name="DPS"><img src="images/ui/check_' + a.DPS + '.svg"></td>' +
             '<td class="cell_2" name="HPS"><img src="images/ui/check_' + a.HPS + '.svg"></td>' +
             '<td class="cell_2" name="BM"><img src="images/ui/check_' + a.BM + '.svg"></td></tr></table><div class="editbg"></div><div class="divider"></div></div>'
