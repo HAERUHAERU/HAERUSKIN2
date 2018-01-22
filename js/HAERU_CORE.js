@@ -72,9 +72,9 @@ function getData(d, pets, sortkey) {
 }
 function HaeruData(d, e) {
     if (d.Job == "") {
-        var schPets = ["요정", "Eos", "Selene", "フェアリー"];
-        var smnPets = ["에기", "카벙클", "Carbuncle", "Egi", "エギ", "カーバンクル", "데미바하무트", "Demi-Bahamut"];
-        var mchPets = ["자동포탑", "Autoturret", "オートタレット", "Selbstschuss-Gyrocopter", "Auto-tourelle"];
+        var schPets = ["요정", "Eos", "Selene", "フェアリー", "小仙女"];
+        var smnPets = ["에기", "카벙클", "Carbuncle", "Egi", "エギ", "カーバンクル", "데미바하무트", "Demi-Bahamut", "石兽"];
+        var mchPets = ["자동포탑", "Autoturret", "オートタレット", "Selbstschuss-Gyrocopter", "Auto-tourelle","式浮空炮塔"];
 
         var regex = /(?:.*?)\((.*?)\)/im;
         var matches = d.name.match(regex);
