@@ -4,7 +4,7 @@ lang = {
     BM: '',
     edit: '',    
     data: {
-        kr: '[홍련의 해방자] 해루스킨 2 - 모그리/해루',
+        kr: '[영웅의 귀환] 해루스킨 2 - 모그리/해루',
         en: 'HAERUSKIN 2 - KR Moogle/해루'
     },
     size: {
