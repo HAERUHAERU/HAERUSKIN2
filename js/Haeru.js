@@ -533,7 +533,7 @@ function graphColor(Job, Name) {
             default: return '#6e6e6e'
         }
     } else if (localStorage.getItem('thema') == 7) {
-       $('#Body').find('.barBg').css('background', 'rgba(0,0,0,0.25)')
+       $('#Body').find('.barBg').css('background', 'rgba(0,0,0,0.1)')
         if(Name.indexOf("YOU") > -1 || Name.indexOf(myName) > -1)
             return 'linear-gradient(to right, red, orange , yellow, green, cyan, blue, violet)' 
         else 
@@ -546,7 +546,7 @@ function bgColor() {
     else if (localStorage.getItem("thema") == 5)
         return 'rgba(26,26,26,0)'
     else if (localStorage.getItem("thema") == 7)
-        return 'rgba(0,0,0,0.25)'
+        return 'rgba(0,0,0,0.1)'
     else if (localStorage.getItem("thema") == 4)
         return 'rgba(54,30,17,' + (parseInt(localStorage.getItem('opacity')) * 0.25 - 0.25) + ')'
     else
