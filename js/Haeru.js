@@ -501,7 +501,6 @@ function graphColor(Job, Name) {
         }
     } else if (localStorage.getItem('thema') == 4) {
         $('#Header .tableHeader, nav').css('background', 'rgba(54,30,17,' + (parseInt(localStorage.getItem('opacity')) * 0.25 - 0.25) + ')');
-        $('#Body .barBg').css('background', 'rgba(0,0,0,0)')
         if (Name.indexOf("YOU") > -1 || Name.indexOf(myName) > -1) {
             return '#0db9ab'
         } else {
