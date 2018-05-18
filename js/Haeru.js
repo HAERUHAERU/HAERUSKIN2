@@ -426,7 +426,7 @@ function inputGraph(maxDamage, a, b, flag) {
         $('#' + flag + 'Body').find('#' + userName).find('.bar').css('background', graphColor(a.Class, userName));
     else if (localStorage.getItem('graph') == 2) {
         $('#' + flag + 'Body').find('#' + userName).find('.bar').css('background', '-webkit-gradient(linear, left top,right top, color-stop(0.6,' + graphColor(a.Class, userName) + '), to(rgba(24,24,24,0)))');      
-        if(userName == "YOU" && localStorage.getItem('thema') == 7)
+        if((userName.indexOf("YOU") > -1 || userName.indexOf(myName) > -1) && localStorage.getItem('thema') == 7)
             $('#' + flag + 'Body').find('#' + userName).find('.bar').css('background', 'linear-gradient(to right, red, orange , yellow, green, cyan, blue, violet, transparent)');
     }else {
         $('#' + flag + 'Body').find('#' + userName).find('.bar').css({ background: graphColor(a.Class, userName), height: '1px', 'margin-top': '2.2rem' });
@@ -503,9 +503,9 @@ function graphColor(Job, Name) {
         $('#Header .tableHeader, nav').css('background', 'rgba(115,74,42,' + (parseInt(localStorage.getItem('opacity')) * 0.25 - 0.25) + ')');
         $('#Body .barBg').css('background', 'rgba(0,0,0,0)')
         if (Name.indexOf("YOU") > -1 || Name.indexOf(myName) > -1) {
-            return '#58B6AC'
+            return '#0db9ab'
         } else {
-            return '#F4CE7B'
+            return '#542e1b'
         }
     } else if (localStorage.getItem('thema') == 5) {
         $('#Body').find('.barBg, .bar, .pet, .ds, .oh').css('background', 'rgba(0,0,0,0)')
@@ -538,7 +538,7 @@ function graphColor(Job, Name) {
             default: return '#6e6e6e'
         }
     } else if (localStorage.getItem('thema') == 7) {
-        if(Name == "YOU")
+        if(Name.indexOf("YOU") > -1 || Name.indexOf(myName) > -1)
             return 'linear-gradient(to right, red, orange , yellow, green, cyan, blue, violet)' 
         else 
             return '#EAEAEA'  
@@ -550,7 +550,7 @@ function bgColor() {
     else if (localStorage.getItem("thema") == 5 || localStorage.getItem("thema") == 8)
         return 'rgba(26,26,26,0)'
     else if (localStorage.getItem("thema") == 4)
-        return 'rgba(115,74,42,' + (parseInt(localStorage.getItem('opacity')) * 0.25 - 0.25) + ')'
+        return 'rgba(84,46,27,' + (parseInt(localStorage.getItem('opacity')) * 0.25 - 0.25) + ')'
     else
         return 'rgba(26,26,26,' + (parseInt(localStorage.getItem('opacity')) * 0.25 - 0.25) + ')'
 }
