@@ -57,14 +57,9 @@ lang = {
             color: '#fa86c3'
         },
         7: {
-            kr: 'I ♥ SAM',
-            en: 'I ♥ SAM',            
+            kr: '무지개',
+            en: 'Rainbow',            
             color: '#ffbb00'
-        },
-        8: {
-            kr: '화이트',
-            en: 'White',            
-            color: '#BDBDBD'
         }
     },
     graph: {
