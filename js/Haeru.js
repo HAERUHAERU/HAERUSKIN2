@@ -469,6 +469,7 @@ function graphColor(Job, Name) {
             default: return '#353535'
         }
     } else if (localStorage.getItem('thema') == 2) {
+        $('#Body .barBg, #Header .tableHeader, nav').css('background', 'rgba(255,255,255, .1)')
         switch (Job) {
             case 'GLA': case 'GLD': case 'PLD': return '#bdd2cb'
             case 'WAR': case 'MRD': return '#f8a185'
@@ -510,6 +511,7 @@ function graphColor(Job, Name) {
         $('#Body').find('#YOU .tableBody td, .myPet .tableBody td').css('color', '#EEFF41');
         $('#zone').css('background', 'transparent');
     } else if (localStorage.getItem('thema') == 6) {        
+        $('#Body .barBg, #Header .tableHeader, nav').css('background', 'rgba(255,255,255, .1)')
         switch (Job) {
             case 'GLA': case 'GLD': case 'PLD': return '#fda4ba'
             case 'WAR': case 'MRD': return '#fec5e5'
@@ -531,6 +533,7 @@ function graphColor(Job, Name) {
             default: return '#6e6e6e'
         }
     } else if (localStorage.getItem('thema') == 7) {
+       $('#Body').find('.barBg').css('background', 'rgba(0,0,0,0.1)')
         if(Name.indexOf("YOU") > -1 || Name.indexOf(myName) > -1)
             return 'linear-gradient(to right, red, orange , yellow, green, cyan, blue, violet)' 
         else 
@@ -540,8 +543,10 @@ function graphColor(Job, Name) {
 function bgColor() {
     if (localStorage.getItem("thema") == 2 || localStorage.getItem("thema") == 6)
         return 'rgba(255,255,255,0.1)'
-    else if (localStorage.getItem("thema") == 5 || localStorage.getItem("thema") == 8)
+    else if (localStorage.getItem("thema") == 5)
         return 'rgba(26,26,26,0)'
+    else if (localStorage.getItem("thema") == 7)
+        return 'rgba(0,0,0,0.1)'
     else if (localStorage.getItem("thema") == 4)
         return 'rgba(54,30,17,' + (parseInt(localStorage.getItem('opacity')) * 0.25 - 0.25) + ')'
     else
