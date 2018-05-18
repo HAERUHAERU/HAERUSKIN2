@@ -543,7 +543,7 @@ function bgColor() {
     else if (localStorage.getItem("thema") == 5 || localStorage.getItem("thema") == 8)
         return 'rgba(26,26,26,0)'
     else if (localStorage.getItem("thema") == 4)
-        return 'rgba(54,30,17,' + (parseInt(localStorage.getItem('opacity')) * 0.25) + ')'
+        return 'rgba(54,30,17,' + (parseInt(localStorage.getItem('opacity')) * 0.25 - 0.25) + ')'
     else
         return 'rgba(26,26,26,' + (parseInt(localStorage.getItem('opacity')) * 0.25 - 0.25) + ')'
 }
