@@ -424,9 +424,12 @@ function inputGraph(maxDamage, a, b, flag) {
     //graph style and thema
     if (localStorage.getItem('graph') == 1)
         $('#' + flag + 'Body').find('#' + userName).find('.bar').css('background', graphColor(a.Class, userName));
-    else if (localStorage.getItem('graph') == 2)
-        $('#' + flag + 'Body').find('#' + userName).find('.bar').css('background', '-webkit-gradient(linear, left top,right top, color-stop(0.6,' + graphColor(a.Class, userName) + '), to(rgba(24,24,24,0.0)))');
-    else {
+    else if (localStorage.getItem('graph') == 2) {
+        $('#' + flag + 'Body').find('#' + userName).find('.bar').css('background', '-webkit-gradient(linear, left top,right top, color-stop(0.6,' + graphColor(a.Class, userName) + '), to(rgba(24,24,24,0)))');      
+        if(a.Class == "SAM" && localStorage.getItem('thema') == 7){
+            $('#' + flag + 'Body').find('#' + userName).find('.bar').css('background', 'linear-gradient(to right, red, orange , yellow, green, cyan, blue, violet, transparent)');
+        }
+    }else {
         $('#' + flag + 'Body').find('#' + userName).find('.bar').css({ background: graphColor(a.Class, userName), height: '1px', 'margin-top': '2.2rem' });
         $('#' + flag + 'Body').find('#' + userName).find('.pet, .oh, .ds').css({ height: '1px', 'margin-top': '2.2rem' });
     }
@@ -505,20 +508,54 @@ function graphColor(Job, Name) {
         } else {
             return '#F4CE7B'
         }
-    } else {
+    } else if (localStorage.getItem('thema') == 5) {
         $('#Body').find('.barBg, .bar, .pet, .ds, .oh').css('background', 'rgba(0,0,0,0)')
         $('#Body .divider').css('background', 'rgba(255,255,255,.1)')
-        $('nav, #Header .tableHeader').css('background', 'rgba(0,0,0,0)')
         $('.DPS, .HPS').css('color', '#68efad');
         $('.Death').css('color', '#ff5252');
         $('#Body').find('#YOU .tableBody td, .myPet .tableBody td').css('color', '#EEFF41');
         $('#zone').css('background', 'transparent');
+    } else if (localStorage.getItem('thema') == 6) {        
+        $('#Body .barBg, #Header .tableHeader, nav').css('background', 'rgba(255,255,255, .1)')
+        switch (Job) {
+            case 'GLA': case 'GLD': case 'PLD': return '#fda4ba'
+            case 'WAR': case 'MRD': return '#fec5e5'
+            case 'DRK': return '#f69acd'
+            case 'WHM': case 'CNJ': return '#fb9483'
+            case 'SCH': return '#fdab9f'
+            case 'AST': return '#f2b8c6'            
+            case 'MNK': case 'PGL': return '#fa86c3'
+            case 'DRG': case 'LNC': return '#ff1695'
+            case 'NIN': case 'ROG': return '#fc46aa'
+            case 'SAM': return '#fe5da9'     
+            case 'BLM': case 'THM': return '#f25278'
+            case 'SMN': case 'ACN': return '#f26b8b'
+            case 'RDM': return '#f69abf'
+            case 'BRD': case 'ARC': return '#fe7f9c'
+            case 'MCH': return '#fc94af'
+            case 'LMB': return '#fc4c4e'
+            case 'CBO': return '#9e4245'
+            default: return '#6e6e6e'
+        }
+    } else if (localStorage.getItem('thema') == 7) {
+        switch (Job) {
+            case 'SAM': return 'linear-gradient(to right, red, orange , yellow, green, cyan, blue, violet)' 
+            case 'GLA': case 'GLD': case 'PLD': case 'WAR': case 'MRD': case 'DRK': return '#858585'
+            case 'WHM': case 'CNJ': case 'SCH': case 'AST': return '#cdcdcd'
+            case 'MNK': case 'PGL': case 'DRG': case 'LNC': case 'BLM': case 'THM': case 'SMN': case 'ACN': case 'RDM': case 'BRD': case 'ARC': case 'MCH': case 'NIN': case 'ROG': return '#404040'
+            case 'LMB': return '#ffbb00'
+            case 'CBO': return '#757575'
+            default: return '#353535'
+        }       
+    } else if (localStorage.getItem('thema') == 8) {
+        $('#Body').find('.barBg').css('background', 'rgba(0,0,0,0)')          
+        return '#fff'
     }
 }
 function bgColor() {
-    if (localStorage.getItem("thema") == 2)
+    if (localStorage.getItem("thema") == 2 || localStorage.getItem("thema") == 6)
         return 'rgba(255,255,255,0.1'
-    else if (localStorage.getItem("thema") == 5)
+    else if (localStorage.getItem("thema") == 5 || localStorage.getItem("thema") == 8)
         return 'rgba(26,26,26,0)'
     else if (localStorage.getItem("thema") == 4)
         return 'rgba(115,74,42,' + (parseInt(localStorage.getItem('opacity')) * 0.25 - 0.25) + ')'
