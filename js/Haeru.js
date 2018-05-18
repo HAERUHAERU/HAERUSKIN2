@@ -469,7 +469,6 @@ function graphColor(Job, Name) {
             default: return '#353535'
         }
     } else if (localStorage.getItem('thema') == 2) {
-        $('#Body .barBg, #Header .tableHeader, nav').css('background', 'rgba(255,255,255, .1)')
         switch (Job) {
             case 'GLA': case 'GLD': case 'PLD': return '#bdd2cb'
             case 'WAR': case 'MRD': return '#f8a185'
@@ -500,12 +499,8 @@ function graphColor(Job, Name) {
             default: return '#353535'
         }
     } else if (localStorage.getItem('thema') == 4) {
-        $('#Header .tableHeader, nav').css('background', 'rgba(54,30,17,' + (parseInt(localStorage.getItem('opacity')) * 0.25 - 0.25) + ')');
-        if (Name.indexOf("YOU") > -1 || Name.indexOf(myName) > -1) {
-            return '#0db9ab'
-        } else {
-            return '#361e11'
-        }
+        if (Name.indexOf("YOU") > -1 || Name.indexOf(myName) > -1) return '#0db9ab'
+        else return '#361e11'
     } else if (localStorage.getItem('thema') == 5) {
         $('#Body').find('.barBg, .bar, .pet, .ds, .oh').css('background', 'rgba(0,0,0,0)')
         $('#Body .divider').css('background', 'rgba(255,255,255,.1)')
@@ -515,7 +510,6 @@ function graphColor(Job, Name) {
         $('#Body').find('#YOU .tableBody td, .myPet .tableBody td').css('color', '#EEFF41');
         $('#zone').css('background', 'transparent');
     } else if (localStorage.getItem('thema') == 6) {        
-        $('#Body .barBg, #Header .tableHeader, nav').css('background', 'rgba(255,255,255, .1)')
         switch (Job) {
             case 'GLA': case 'GLD': case 'PLD': return '#fda4ba'
             case 'WAR': case 'MRD': return '#fec5e5'
@@ -549,7 +543,7 @@ function bgColor() {
     else if (localStorage.getItem("thema") == 5 || localStorage.getItem("thema") == 8)
         return 'rgba(26,26,26,0)'
     else if (localStorage.getItem("thema") == 4)
-        return 'rgba(54,30,17,' + (parseInt(localStorage.getItem('opacity')) * 0.25 - 0.25) + ')'
+        return 'rgba(54,30,17,' + (parseInt(localStorage.getItem('opacity')) * 0.25) + ')'
     else
         return 'rgba(26,26,26,' + (parseInt(localStorage.getItem('opacity')) * 0.25 - 0.25) + ')'
 }
