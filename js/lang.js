@@ -44,7 +44,7 @@ lang = {
         4: {
             kr: '민트초코',
             en: 'Mint & Chocolate',            
-            color: '#F4CE7B'
+            color: '#0db9ab'
         },
         5: {
             kr: '임금님의 ACT',
