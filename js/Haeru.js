@@ -511,6 +511,7 @@ function graphColor(Job, Name) {
     } else if (localStorage.getItem('thema') == 5) {
         $('#Body').find('.barBg, .bar, .pet, .ds, .oh').css('background', 'rgba(0,0,0,0)')
         $('#Body .divider').css('background', 'rgba(255,255,255,.1)')
+        $('nav, #Header .tableHeader').css('background', 'rgba(0,0,0,0)')
         $('.DPS, .HPS').css('color', '#68efad');
         $('.Death').css('color', '#ff5252');
         $('#Body').find('#YOU .tableBody td, .myPet .tableBody td').css('color', '#EEFF41');
@@ -548,13 +549,14 @@ function graphColor(Job, Name) {
             default: return '#353535'
         }       
     } else if (localStorage.getItem('thema') == 8) {
-        $('#Body').find('.barBg').css('background', 'rgba(0,0,0,0)')          
+        $('#Body').find('.barBg').css('background', 'rgba(0,0,0,0)')
+        $('nav, #Header .tableHeader').css('background', 'rgba(0,0,0,0)')          
         return '#fff'
     }
 }
 function bgColor() {
     if (localStorage.getItem("thema") == 2 || localStorage.getItem("thema") == 6)
-        return 'rgba(255,255,255,0.1'
+        return 'rgba(255,255,255,0.1)'
     else if (localStorage.getItem("thema") == 5 || localStorage.getItem("thema") == 8)
         return 'rgba(26,26,26,0)'
     else if (localStorage.getItem("thema") == 4)
