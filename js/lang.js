@@ -52,8 +52,8 @@ lang = {
             color: '#B39DDB'
         },
         6: {
-            kr: '핑크핑크해',
-            en: 'Pink! Pink!',            
+            kr: '벚꽃',
+            en: 'Cherry Blossom',            
             color: '#fa86c3'
         },
         7: {
