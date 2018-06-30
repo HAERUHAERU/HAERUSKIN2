@@ -7,7 +7,7 @@ Number.prototype.nanFix = function () {
 };
 
 function LastHaeruData(e, sortkey) {
-    this.duration = e.Encounter.duration; 
+    this.duration = e.Encounter.duration;
     this.title = e.Encounter.title;
     this.zone = e.Encounter.CurrentZoneName;
     this.RDPS = parseInt(e.Encounter.ENCDPS).nanFix();
@@ -73,44 +73,40 @@ function getData(d, pets, sortkey) {
 function HaeruData(d, e) {
     if (d.Job == "") {
         var schPets = ["요정", "Eos", "Selene", "フェアリー", "小仙女"];
-        var smnPets = ["에기", "카벙클", "Carbuncle", "Egi", "エギ", "カーバンクル", "데미바하무트", "Demi-Bahamut", "石兽", "亚灵神巴哈姆特", "Rubin-Karfunkel", "Topas-Karfunkel", "Smaragd-Karfunkel"];
-        var mchPets = ["자동포탑", "Autoturret", "オートタレット", "Selbstschuss-Gyrocopter", "Auto-tourelle","式浮空炮塔"];
+        var smnPets = ["에기", "카벙클", "Carbuncle", "Egi", "エギ", "カーバンクル", "데미바하무트", "Demi-Bahamut", "石兽", "亚灵神巴哈姆特", "-Karfunkel"];
+        var mchPets = ["자동포탑", "Autoturret", "オートタレット", "Selbstschuss-Gyrocopter", "Auto-tourelle", "式浮空炮塔"];
 
         var regex = /(?:.*?)\((.*?)\)/im;
         var matches = d.name.match(regex);
 
         //구별 (초코보 CBO / 펫 AVA)
-        if (smnPets.indexOf(d.name.split(" ")[0]) > -1 || smnPets.indexOf(d.name.split(" ")[1]) > -1) {
+        if (d.name.indexOf("에기") > -1 || d.name.indexOf("카벙클") > -1 || d.name.indexOf("데미바하무트") > -1 || d.name.indexOf("Egi") > -1 || d.name.indexOf("Demi-Bahamut") > -1 || d.name.indexOf("Carbuncle") > -1 || d.name.indexOf("Karfunkel") > -1 || d.name.indexOf("エギ") > -1 || d.name.indexOf("カーバンクル") > -1 || d.name.indexOf("石兽") > -1 || d.name.indexOf("亚灵神巴哈姆特") > -1) {
             this.Job = "AVA";
             this.Class = "SMN";
-            if(matches != null)
-            this.petOwner = matches[1];
+            if (matches != null)
+                this.petOwner = matches[1];
         }
-        else if (schPets.indexOf(d.name.split(" ")[0]) > -1) {
+        else if (d.name.indexOf("요정") > -1 || d.name.indexOf("Eos") > -1 || d.name.indexOf("Selene") > -1 || d.name.indexOf("フェアリー") > -1 || d.name.indexOf("小仙女") > -1) {
             this.Job = "AVA";
             this.Class = "SCH";
-            if(matches != null)
-            this.petOwner = matches[1];
+            if (matches != null)
+                this.petOwner = matches[1];
         }
-        else if (mchPets.indexOf(d.name.split(" ")[0]) > -1) {
+        else if (d.name.indexOf("자동포탑") > -1 || d.name.indexOf("Autoturret") > -1 || d.name.indexOf("オートタレット") > -1 || d.name.indexOf("Selbstschuss-Gyrocopter") > -1 || d.name.indexOf("Auto-tourelle") > -1 || d.name.indexOf("式浮空炮塔") > -1) {
             this.Job = "AVA";
             this.Class = "MCH";
-            if(matches != null)
-            this.petOwner = matches[1];
+            if (matches != null)
+                this.petOwner = matches[1];
         }
-        else if (schPets.indexOf(d.name.split(" ")[0]) == -1 && mchPets.indexOf(d.name.split(" ")[0]) == -1 && smnPets.indexOf(d.name.split(" ")[0]) == -1 && smnPets.indexOf(d.name.split(" ")[1]) == -1 && d.name.indexOf("(") > -1) {
-            this.Job = "CBO";
-            this.Class = "CBO";
-            if(matches != null)
-            this.petOwner = matches[1];
-        }
-        else if (d.name == "Limit Break") {
+        else if (d.name.toUpperCase().indexOf("LIMIT BREAK") > -1 || d.name.indexOf("リミット") > -1) {
             this.Job = "LMB";
             this.Class = "LMB";
         }
         else {
-            this.Job = "error";
-            this.Class = "error";
+            this.Job = "CBO";
+            this.Class = "CBO";
+            if (matches != null)
+                this.petOwner = matches[1];
         }
     } else {
         if (d.Job != undefined) {
