@@ -79,7 +79,7 @@ function HaeruData(d, e) {
         var regex = /(?:.*?)\((.*?)\)/im;
         var matches = d.name.match(regex);
 
-        if (d.name.indexOf("에기") > -1 || d.name.indexOf("카벙클") > -1 || d.name.indexOf("데미바하무트") > -1 || d.name.indexOf("Egi") > -1 || d.name.indexOf("Demi-Bahamut") > -1 || d.name.indexOf("Carbuncle") > -1 || d.name.indexOf("Karfunkel") > -1 || d.name.indexOf("エギ") > -1 || d.name.indexOf("カーバンクル") > -1 || d.name.indexOf("石兽") > -1 || d.name.indexOf("亚灵神巴哈姆特") > -1) {
+        if (d.name.indexOf("에기") > -1 || d.name.indexOf("카벙클") > -1 || d.name.indexOf("데미바하무트") > -1 || d.name.indexOf("Egi") > -1 || d.name.indexOf("Demi-Bahamut") > -1 || d.name.indexOf("Carbuncle") > -1 || d.name.indexOf("Karfunkel") > -1 || d.name.indexOf("エギ") > -1 || d.name.indexOf("カーバンクル") > -1 || d.name.indexOf("石兽") > -1 || d.name.indexOf("之灵") > -1 || d.name.indexOf("亚灵神巴哈姆特") > -1) {
             this.Job = "AVA";
             this.Class = "SMN";
             if (matches != null)
