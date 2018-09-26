@@ -72,14 +72,10 @@ function getData(d, pets, sortkey) {
 }
 function HaeruData(d, e) {
     if (d.Job == "") {
-        //var schPets = ["요정", "Eos", "Selene", "フェアリー", "小仙女"];
-        //var smnPets = ["에기", "카벙클", "Carbuncle", "Egi", "エギ", "カーバンクル", "데미바하무트", "Demi-Bahamut", "石兽", "亚灵神巴哈姆特", "Karfunkel"];
-        //var mchPets = ["자동포탑", "Autoturret", "オートタレット", "Selbstschuss-Gyrocopter", "Auto-tourelle", "式浮空炮塔"];
-
         var regex = /(?:.*?)\((.*?)\)/im;
         var matches = d.name.match(regex);
 
-        if (d.name.indexOf("에기") > -1 || d.name.indexOf("카벙클") > -1 || d.name.indexOf("데미바하무트") > -1 || d.name.indexOf("Egi") > -1 || d.name.indexOf("Demi-Bahamut") > -1 || d.name.indexOf("Carbuncle") > -1 || d.name.indexOf("Karfunkel") > -1 || d.name.indexOf("エギ") > -1 || d.name.indexOf("カーバンクル") > -1 || d.name.indexOf("石兽") > -1 || d.name.indexOf("之灵") > -1 || d.name.indexOf("亚灵神巴哈姆特") > -1) {
+        if (d.name.indexOf("에기") > -1 || d.name.indexOf("카벙클") > -1 || d.name.indexOf("데미바하무트") > -1 || d.name.indexOf("Egi") > -1 || d.name.indexOf("Demi-Bahamut") > -1 || d.name.indexOf("Carbuncle") > -1 || d.name.indexOf("Karfunkel") > -1 || d.name.indexOf("之灵") > -1 || d.name.indexOf("エギ") > -1 || d.name.indexOf("カーバンクル") > -1 || d.name.indexOf("石兽") > -1 || d.name.indexOf("亚灵神巴哈姆特") > -1) {
             this.Job = "AVA";
             this.Class = "SMN";
             if (matches != null)
@@ -143,9 +139,11 @@ function HaeruData(d, e) {
     this.Avoid = parseInt(d.hitfailed).nanFix();
     if (d.maxhit == "") {
         this.MaxHitVal = 0;
+        this.MaxHitRealVal = 0;
         this.MaxHitStr = "";
     } else {
-        this.MaxHitVal = parseInt(d.maxhit.split('-')[1].replace(/[^\d]+/g, '')).nanFix();
+        this.MaxHitVal = parseFloat(d.maxhit.split('-')[1].replace(/[^\d]+/g, ''));
+        this.MaxHitRealVal = d.maxhit.split('-')[1];
         this.MaxHitStr = d.maxhit.split('-')[0];
     }
     this.DTaken = parseInt(d.damagetaken).nanFix();
@@ -165,9 +163,11 @@ function HaeruData(d, e) {
     this.CHEAL = parseFloat(d.critheals / d.heals * 100).nanFix();
     if (d.maxheal == "") {
         this.MaxHealVal = 0;
+        this.MaxHealRealVal = 0;
         this.MaxHealStr = "";
     } else {
-        this.MaxHealVal = parseInt(d.maxheal.split('-')[1].replace(/[^\d]+/g, '')).nanFix();
+        this.MaxHealVal = parseFloat(d.maxheal.split('-')[1].replace(/[^\d]+/g, ''));        
+        this.MaxHitRealVal = d.maxheal.split('-')[1];
         this.MaxHealStr = d.maxheal.split('-')[0];
     }
     this.Dispel = parseInt(d.cures).nanFix();
@@ -216,9 +216,11 @@ function mergedData(p, o, e) {
 
     if (o.MaxHitVal == 0 && p.MaxHitVal == 0) {
         o.MaxHitStr = "";
+        o.MaxHitRealVal = 0; 
         o.MaxHitVal = 0;
     } else if (o.MaxHitVal <= p.MaxHitVal) {
         o.MaxHitStr = p.MaxHitStr;
+        o.MaxHitRealVal = p.MaxHitRealVal;
         o.MaxHitVal = p.MaxHitVal;
     }
 
@@ -236,9 +238,11 @@ function mergedData(p, o, e) {
 
     if (o.MaxHealVal == 0 && p.MaxHealVal == 0) {
         o.MaxHealStr = "";
+        o.MaxHealRealVal = 0; 
         o.MaxHealVal = 0;
     } else if (o.MaxHealVal <= p.MaxHealVal) {
         o.MaxHealStr = p.MaxHealStr;
+        o.MaxHealRealVal = p.MaxHealRealVal;
         o.MaxHealVal = p.MaxHealVal;
     }
 
