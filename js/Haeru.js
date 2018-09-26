@@ -227,7 +227,7 @@ document.addEventListener("onOverlayDataUpdate", function (e) {
     update();
     saveLog();
 });
-function update(flag) {
+function update() {
     if (lastData === null) return;
     else {
         lastDPS = new LastHaeruData(lastData, 'DPS');
@@ -371,8 +371,8 @@ function addData(name, td, a) {
         case 'CHeal': case 'Dispel': case 'Absorb': case 'Replenish': case 'Death':
             if (a[name] > 1000000) return addComma((a[name] / 1000).toFixed(0)) + 'k';
             else return addComma(a[name]);
-        case 'MaxHit': return addComma(a.MaxHitVal) + '<font class="ex"> / ' + a.MaxHitStr + '</font>';
-        case 'MaxHeal': return addComma(a.MaxHealVal) + '<font class="ex"> / ' + a.MaxHealStr + '</font>';
+        case 'MaxHit': return a.MaxHitRealVal + '<font class="ex"> / ' + a.MaxHitStr + '</font>';
+        case 'MaxHeal': return a.MaxHealRealVal + '<font class="ex"> / ' + a.MaxHealStr + '</font>';
         default: return addComma(a[name].toFixed(1 * localStorage.getItem('number'))) + '<font class="ex">%</font>';
     }
 }
@@ -455,7 +455,7 @@ function graphColor(Job, Name) {
             case 'WHM': case 'CNJ': return '#BDBDBD'
             case 'SCH': return '#32307B'
             case 'AST': return '#B1561C'
-            case 'MNK': case 'PGL': return '#B38915'
+            case 'MNK': case 'PGL': case "PUG": return '#B38915'
             case 'DRG': case 'LNC': return '#3752D8'
             case 'NIN': case 'ROG': return '#EE2E48'
             case 'SAM': return '#E45A0F'
@@ -477,7 +477,7 @@ function graphColor(Job, Name) {
             case 'WHM': case 'CNJ': return '#f3f5e7'
             case 'SCH': return '#b8b8d4'
             case 'AST': return '#e5b99d'
-            case 'MNK': case 'PGL': return '#cec0a3'
+            case 'MNK': case 'PGL': case "PUG": return '#cec0a3'
             case 'DRG': case 'LNC': return '#abc3e5'
             case 'NIN': case 'ROG': return '#fbc1b3'
             case 'SAM': return '#fec983'
@@ -494,7 +494,7 @@ function graphColor(Job, Name) {
         switch (Job) {
             case 'GLA': case 'GLD': case 'PLD': case 'WAR': case 'MRD': case 'DRK': return '#475ece'
             case 'WHM': case 'CNJ': case 'SCH': case 'AST': return '#467837'
-            case 'MNK': case 'PGL': case 'DRG': case 'LNC': case 'SAM': case 'BLM': case 'THM': case 'SMN': case 'ACN': case 'RDM': case 'BRD': case 'ARC': case 'MCH': case 'NIN': case 'ROG': return '#813b3c'
+            case 'MNK': case 'PGL': case "PUG": case 'DRG': case 'LNC': case 'SAM': case 'BLM': case 'THM': case 'SMN': case 'ACN': case 'RDM': case 'BRD': case 'ARC': case 'MCH': case 'NIN': case 'ROG': return '#813b3c'
             case 'LMB': return '#FFBB00'
             case 'CBO': return '#757575'
             default: return '#353535'
@@ -519,7 +519,7 @@ function graphColor(Job, Name) {
             case 'WHM': case 'CNJ': return '#fb9483'
             case 'SCH': return '#fdab9f'
             case 'AST': return '#f2b8c6'            
-            case 'MNK': case 'PGL': return '#fa86c3'
+            case 'MNK': case 'PGL': case "PUG": return '#fa86c3'
             case 'DRG': case 'LNC': return '#ff1695'
             case 'NIN': case 'ROG': return '#fc46aa'
             case 'SAM': return '#fe5da9'     
