@@ -4,7 +4,7 @@ lang = {
     BM: '',
     edit: '',    
     data: {
-        kr: '[새벽의 빛] 해루스킨 2 - 모그리/해루',
+        kr: '해루스킨 2 - 모그리/해루',
         en: 'HAERUSKIN 2 - KR Moogle/해루'
     },
     size: {
