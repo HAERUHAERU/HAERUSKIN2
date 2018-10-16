@@ -167,7 +167,7 @@ function HaeruData(d, e) {
         this.MaxHealStr = "";
     } else {
         this.MaxHealVal = parseFloat(d.maxheal.split('-')[1].replace(/[^\d]+/g, ''));        
-        this.MaxHitRealVal = d.maxheal.split('-')[1];
+        this.MaxHealRealVal = d.maxheal.split('-')[1];
         this.MaxHealStr = d.maxheal.split('-')[0];
     }
     this.Dispel = parseInt(d.cures).nanFix();
