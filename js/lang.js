@@ -4,8 +4,8 @@ lang = {
     BM: '',
     edit: '',    
     data: {
-        kr: '해루스킨 2 - 모그리/해루',
-        en: 'HAERUSKIN 2 - KR Moogle/해루'
+        kr: '[5.x] 해루스킨 2 - 모그리/해루',
+        en: '[5.x] HAERUSKIN 2 - KR Moogle/해루'
     },
     size: {
         1: '55.5%',
