@@ -402,7 +402,7 @@ function inputGraph(maxDamage, a, b, flag) {
 
     if (localStorage.getItem('pets') == 1) {
         if (flag == 'DPS' || flag == 'BM') {
-            if (a.Class == "MCH" || a.Class == "SMN" || a.Class == "ACN") {
+            if (a.Class == "MCH" || a.Class == "SMN" || a.Class == "ACN" || a.Class == "DRK" || a.Class == "NIN") {
                 var petWidth = Math.min(100, parseInt((a.Damage - b.Damage) / maxDamage * 100))
                 graphAnimate(petWidth, 'pet', 'pet', flag, userName)
             }
