@@ -75,36 +75,64 @@ function HaeruData(d, e) {
         var regex = /(?:.*?)\((.*?)\)/im;
         var matches = d.name.match(regex);
 
-        if (d.name.indexOf("에기") > -1 || d.name.indexOf("카벙클") > -1 || d.name.indexOf("데미바하무트") > -1 || d.name.indexOf("Egi") > -1 || d.name.indexOf("Demi-Bahamut") > -1 || d.name.indexOf("Carbuncle") > -1 || d.name.indexOf("Karfunkel") > -1 || d.name.indexOf("之灵") > -1 || d.name.indexOf("エギ") > -1 || d.name.indexOf("カーバンクル") > -1 || d.name.indexOf("石兽") > -1 || d.name.indexOf("亚灵神巴哈姆特") > -1) {
+        var smnPetsList = ["카벙클 에메랄드", "カーバンクル・エメラルド", "绿宝石兽", "Smaragd-Karfunkel", "Carbuncle émeraude", "Emerald Carbuncle",
+                            "카벙클 토파즈", "カーバンクル・トパーズ", "黄宝石兽", "Topas-Karfunkel", "Carbuncle topaze", "Topaz Carbuncle",
+                            "카벙클 루비", "カーバンクル・ルビー", "红宝石兽", "Rubin-Karfunkel", "Carbuncle rubis", "Ruby Carbuncle",
+                            "가루다 에기", "ガルーダ・エギ", "迦楼罗之灵", "Garuda-Egi",
+                            "이프리트 에기", "イフリート・エギ", "伊弗利特之灵", "Ifrit-Egi",
+                            "타이탄 에기", "タイタン・エギ", "泰坦之灵", "Titan-Egi",
+                            "데미바하무트", "デミ・バハムート", "亚灵神巴哈姆特", "Demi-Bahamut", "デミ・フェニックス",
+                            "Demi-Phönix", "Demi-Phénix", "Demi-Phoenix"];
+        var mchPetsList = ["자동포탑 룩", "オートタレット・ルーク", "车式浮空炮塔", "Selbstschuss-Gyrocopter TURM", "Auto-tourelle Tour", "Rook Autoturret",
+                            "자동포탑 비숍", "オートタレット・ビショップ", "象式浮空炮塔", "Selbstschuss-Gyrocopter LÄUFER", "Auto-tourelle Fou", "Bishop Autoturret",
+                            "オートマトン・クイーン", "Automaton DAME", "Automate Reine", "Automaton Queen"];
+        var schPetsList = ["요정 에오스", "フェアリー・エオス", "朝日小仙女", "Eos",
+                            "요정 셀레네", "フェアリー・セレネ", "夕月小仙女", "Selene",
+                            "セラフィム", "Seraph", "Séraphin"];
+        var drkPetsList = ["英雄の影身", "Schattenschemen", "Estime", "Esteem"];
+        var ninPetsList = ["分身", "Gedoppeltes Ich", "Ombre", "Bunshin"];
+
+        var petsName = d.name.split(' (')[0];
+
+        if (smnPetsList.indexOf(petsName) > -1) {
             this.Job = "AVA";
             this.Class = "SMN";
             if (matches != null)
                 this.petOwner = matches[1];
         }
-        else if (d.name.indexOf("요정") > -1 || d.name.indexOf("Eos") > -1 || d.name.indexOf("Selene") > -1 || d.name.indexOf("フェアリー") > -1 || d.name.indexOf("小仙女") > -1) {
+        else if (schPetsList.indexOf(petsName) > -1) {
             this.Job = "AVA";
             this.Class = "SCH";
             if (matches != null)
                 this.petOwner = matches[1];
         }
-        else if (d.name.indexOf("자동포탑") > -1 || d.name.indexOf("Autoturret") > -1 || d.name.indexOf("オートタレット") > -1 || d.name.indexOf("Selbstschuss-Gyrocopter") > -1 || d.name.indexOf("Auto-tourelle") > -1 || d.name.indexOf("式浮空炮塔") > -1) {
+        else if (mchPetsList.indexOf(petsName) > -1) {
             this.Job = "AVA";
             this.Class = "MCH";
             if (matches != null)
                 this.petOwner = matches[1];
         }
-        else if (d.name.toUpperCase().indexOf("LIMIT BREAK") > -1 || d.name.indexOf("リミット") > -1) {
-            this.Job = "LMB";
-            this.Class = "LMB";
+        else if (drkPetsList.indexOf(petsName) > -1) {
+            this.Job = "AVA";
+            this.Class = "DRK";
+            if (matches != null)
+                this.petOwner = matches[1];
+        }
+        else if (ninPetsList.indexOf(petsName) > -1) {
+            this.Job = "AVA";
+            this.Class = "NIN";
+            if (matches != null)
+                this.petOwner = matches[1];
         }
         else if (d.name.indexOf("(") > -1 ){
             this.Job = "CBO";
             this.Class = "CBO";
             if (matches != null)
                 this.petOwner = matches[1];
-        }else{            
-            this.Job = "error";
-            this.Class = "error";
+        }        
+        else {
+            this.Job = "LMB";
+            this.Class = "LMB";
         }
     } else {
         if (d.Job != undefined) {
