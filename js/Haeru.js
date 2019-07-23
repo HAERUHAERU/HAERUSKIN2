@@ -96,8 +96,8 @@ function viewTab(val, flag) {
         localStorage.setItem('tab', val);
         update();
         $('nav').trigger('mouseleave');
-    } else 
-        $('nav').trigger('mouseover');    
+    } else
+        $('nav').trigger('mouseover');
 }
 function createEditTable() {
     var html = '';
@@ -301,11 +301,9 @@ function createTableBody(newBody, a) {
     table.className = "tableBody";
     var bar = document.createElement("div");
     bar.className = "bar";
-    if (a.Class == "SMN" || a.Class == "MCH" || a.Class == "ACN") {
-        var bar1 = document.createElement("div");
-        bar1.className = "pet";
-        wrap.appendChild(bar1);
-    }
+    var bar1 = document.createElement("div");
+    bar1.className = "pet";
+    wrap.appendChild(bar1);
     if (localStorage.getItem('tab') == "HPS") {
         var bar1 = document.createElement("div");
         bar1.className = "oh";
@@ -313,11 +311,9 @@ function createTableBody(newBody, a) {
         var bar2 = document.createElement("div");
         bar2.className = "ds";
         wrap.appendChild(bar2);
-        if (a.Class == "SCH") {
-            var bar3 = document.createElement("div");
-            bar3.className = "pet";
-            wrap.appendChild(bar3);
-        }
+        var bar3 = document.createElement("div");
+        bar3.className = "pet";
+        wrap.appendChild(bar3);
     }
     var barBg = document.createElement("div");
     barBg.className = "barBg";
@@ -402,16 +398,12 @@ function inputGraph(maxDamage, a, b, flag) {
 
     if (localStorage.getItem('pets') == 1) {
         if (flag == 'DPS' || flag == 'BM') {
-            if (a.Class == "MCH" || a.Class == "SMN" || a.Class == "ACN" || a.Class == "DRK" || a.Class == "NIN") {
-                var petWidth = Math.min(100, parseInt((a.Damage - b.Damage) / maxDamage * 100))
-                graphAnimate(petWidth, 'pet', 'pet', flag, userName)
-            }
+            var petWidth = Math.min(100, parseInt((a.Damage - b.Damage) / maxDamage * 100))
+            graphAnimate(petWidth, 'pet', 'pet', flag, userName)
         } else {
-            if (a.Class == "SCH") {
-                var fairyEffHeal = parseInt(a.EffHeal - b.EffHeal)
-                var petWidth = Math.min(100, parseInt((fairyEffHeal / maxDamage) * 100))
-                graphAnimate(petWidth, 'pet', 'pet', flag, userName)
-            }
+            var fairyEffHeal = parseInt(a.EffHeal - b.EffHeal)
+            var petWidth = Math.min(100, parseInt((fairyEffHeal / maxDamage) * 100))
+            graphAnimate(petWidth, 'pet', 'pet', flag, userName)
             graphAnimate(shield, 'ds', 'ds', flag, userName)
             graphAnimate(overheal, 'oh', 'oh', flag, userName)
         }
@@ -425,10 +417,10 @@ function inputGraph(maxDamage, a, b, flag) {
     if (localStorage.getItem('graph') == 1)
         $('#' + flag + 'Body').find('#' + userName).find('.bar').css('background', graphColor(a.Class, userName));
     else if (localStorage.getItem('graph') == 2) {
-        $('#' + flag + 'Body').find('#' + userName).find('.bar').css('background', '-webkit-gradient(linear, left top,right top, color-stop(0.6,' + graphColor(a.Class, userName) + '), to(rgba(24,24,24,0)))');      
-        if((userName.indexOf("YOU") > -1 || userName.indexOf(myName) > -1) && localStorage.getItem('thema') == 7)
+        $('#' + flag + 'Body').find('#' + userName).find('.bar').css('background', '-webkit-gradient(linear, left top,right top, color-stop(0.6,' + graphColor(a.Class, userName) + '), to(rgba(24,24,24,0)))');
+        if ((userName.indexOf("YOU") > -1 || userName.indexOf(myName) > -1) && localStorage.getItem('thema') == 7)
             $('#' + flag + 'Body').find('#' + userName).find('.bar').css('background', 'linear-gradient(to right, red, orange , yellow, green, cyan, blue, violet, transparent)');
-    }else {
+    } else {
         $('#' + flag + 'Body').find('#' + userName).find('.bar').css({ background: graphColor(a.Class, userName), height: '1px', 'margin-top': '2.2rem' });
         $('#' + flag + 'Body').find('#' + userName).find('.pet, .oh, .ds').css({ height: '1px', 'margin-top': '2.2rem' });
     }
@@ -451,7 +443,7 @@ function graphColor(Job, Name) {
         switch (Job) {
             case 'GLA': case 'GLD': case 'PLD': return '#7B9AA2'
             case 'WAR': case 'MRD': return '#A91A16'
-            case 'DRK': return '#682531'            
+            case 'DRK': return '#682531'
             case 'GNB': return '#796D30'
             case 'WHM': case 'CNJ': return '#BDBDBD'
             case 'SCH': return '#32307B'
@@ -476,7 +468,7 @@ function graphColor(Job, Name) {
         switch (Job) {
             case 'GLA': case 'GLD': case 'PLD': return '#bdd2cb'
             case 'WAR': case 'MRD': return '#f8a185'
-            case 'DRK': return '#e9c2c7'        
+            case 'DRK': return '#e9c2c7'
             case 'GNB': return '#a49e7c'
             case 'WHM': case 'CNJ': return '#f3f5e7'
             case 'SCH': return '#b8b8d4'
@@ -487,10 +479,10 @@ function graphColor(Job, Name) {
             case 'SAM': return '#fec983'
             case 'BLM': case 'THM': return '#c9b8da'
             case 'SMN': case 'ACN': return '#82c99d'
-            case 'RDM': return '#f7bdcb'            
+            case 'RDM': return '#f7bdcb'
             case 'BLU': return '#4db3fd'
             case 'BRD': case 'ARC': return '#d4e5a1'
-            case 'MCH': return '#a2d5c6'            
+            case 'MCH': return '#a2d5c6'
             case 'DNC': return '#f3cecd'
             case 'LMB': return '#fdf5a4'
             case 'CBO': return '#b8b8b8'
@@ -516,7 +508,7 @@ function graphColor(Job, Name) {
         $('.Death').css('color', '#ff5252');
         $('#Body').find('#YOU .tableBody td, .myPet .tableBody td').css('color', '#EEFF41');
         $('#zone').css('background', 'transparent');
-    } else if (localStorage.getItem('thema') == 6) {        
+    } else if (localStorage.getItem('thema') == 6) {
         $('#Body .barBg, #Header .tableHeader, nav').css('background', 'rgba(255,255,255, .1)')
         switch (Job) {
             case 'GLA': case 'GLD': case 'PLD': return '#fda4ba'
@@ -525,15 +517,15 @@ function graphColor(Job, Name) {
             case 'GNB': return '#da86b4'
             case 'WHM': case 'CNJ': return '#fb9483'
             case 'SCH': return '#fdab9f'
-            case 'AST': return '#f2b8c6'            
+            case 'AST': return '#f2b8c6'
             case 'MNK': case 'PGL': case "PUG": return '#fa86c3'
             case 'DRG': case 'LNC': return '#ff1695'
             case 'NIN': case 'ROG': return '#fc46aa'
-            case 'SAM': return '#fe5da9'     
+            case 'SAM': return '#fe5da9'
             case 'BLM': case 'THM': return '#f25278'
             case 'SMN': case 'ACN': return '#f26b8b'
             case 'RDM': return '#f69abf'
-            case 'BLU': return '#ec8fa5'            
+            case 'BLU': return '#ec8fa5'
             case 'BRD': case 'ARC': return '#fe7f9c'
             case 'MCH': return '#fc94af'
             case 'DNC': return '#e8acd2'
@@ -542,12 +534,12 @@ function graphColor(Job, Name) {
             default: return '#6e6e6e'
         }
     } else if (localStorage.getItem('thema') == 7) {
-       $('#Body').find('.barBg').css('background', 'rgba(0,0,0,0.1)')
-        if(Name.indexOf("YOU") > -1 || Name.indexOf(myName) > -1)
-            return 'linear-gradient(to right, red, orange , yellow, green, cyan, blue, violet)' 
-        else 
-            return '#EAEAEA'  
-    } 
+        $('#Body').find('.barBg').css('background', 'rgba(0,0,0,0.1)')
+        if (Name.indexOf("YOU") > -1 || Name.indexOf(myName) > -1)
+            return 'linear-gradient(to right, red, orange , yellow, green, cyan, blue, violet)'
+        else
+            return '#EAEAEA'
+    }
 }
 function bgColor() {
     if (localStorage.getItem("thema") == 2 || localStorage.getItem("thema") == 6)
