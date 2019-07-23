@@ -91,6 +91,7 @@ function HaeruData(d, e) {
                             "セラフィム", "Seraph", "Séraphin"];
         var drkPetsList = ["英雄の影身", "Schattenschemen", "Estime", "Esteem"];
         var ninPetsList = ["分身", "Gedoppeltes Ich", "Ombre", "Bunshin"];
+        var astPetsList = ["지상의 별", "Earthly Star", "アーサリースター", "Irdischer Stern", "Étoile terrestre", "地星"];
 
         var petsName = d.name.split(' (')[0];
 
@@ -121,6 +122,12 @@ function HaeruData(d, e) {
         else if (ninPetsList.indexOf(petsName) > -1) {
             this.Job = "AVA";
             this.Class = "NIN";
+            if (matches != null)
+                this.petOwner = matches[1];
+        }        
+        else if (astPetsList.indexOf(petsName) > -1) {
+            this.Job = "AVA";
+            this.Class = "AST";
             if (matches != null)
                 this.petOwner = matches[1];
         }
