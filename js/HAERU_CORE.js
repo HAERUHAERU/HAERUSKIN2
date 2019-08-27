@@ -91,7 +91,6 @@ function HaeruData(d, e) {
                             "セラフィム", "Seraph", "Séraphin"];
         var drkPetsList = ["英雄の影身", "Hochachtung", "Estime", "Esteem"];
         var ninPetsList = ["分身", "Gedoppeltes Ich", "Ombre", "Bunshin"];
-        var astPetsList = ["지상의 별", "Earthly Star", "アーサリースター", "Irdischer Stern", "Étoile terrestre", "地星"];
 
         var petsName = d.name.split(' (')[0];
 
@@ -122,12 +121,6 @@ function HaeruData(d, e) {
         else if (ninPetsList.indexOf(petsName) > -1) {
             this.Job = "AVA";
             this.Class = "NIN";
-            if (matches != null)
-                this.petOwner = matches[1];
-        }        
-        else if (astPetsList.indexOf(petsName) > -1) {
-            this.Job = "AVA";
-            this.Class = "AST";
             if (matches != null)
                 this.petOwner = matches[1];
         }
@@ -174,12 +167,10 @@ function HaeruData(d, e) {
     this.Avoid = parseInt(d.hitfailed).nanFix();
     if (d.maxhit == "") {
         this.MaxHitVal = 0;
-        this.MaxHitRealVal = 0;
         this.MaxHitStr = "";
     } else {
-        this.MaxHitVal = parseFloat(d.maxhit.split('-')[1].replace(/[^\d]+/g, ''));
-        this.MaxHitRealVal = d.maxhit.split('-')[1];
-        this.MaxHitStr = d.maxhit.split('-')[0];
+        this.MaxHitVal = parseInt(d.maxhit.replace(/[^0-9]/g,""));
+        this.MaxHitStr = d.maxhit.replace(/[0-9]/g,"").slice(0,-1);
     }
     this.DTaken = parseInt(d.damagetaken).nanFix();
     this.HTaken = parseInt(d.healstaken).nanFix();
@@ -198,12 +189,10 @@ function HaeruData(d, e) {
     this.CHEAL = parseFloat(d.critheals / d.heals * 100).nanFix();
     if (d.maxheal == "") {
         this.MaxHealVal = 0;
-        this.MaxHealRealVal = 0;
         this.MaxHealStr = "";
     } else {
-        this.MaxHealVal = parseFloat(d.maxheal.split('-')[1].replace(/[^\d]+/g, ''));        
-        this.MaxHealRealVal = d.maxheal.split('-')[1];
-        this.MaxHealStr = d.maxheal.split('-')[0];
+        this.MaxHealVal = parseInt(d.maxheal.replace(/[^0-9]/g,""))  
+        this.MaxHealStr = d.maxheal.replace(/[0-9]/g,"").slice(0,-1)
     }
     this.Dispel = parseInt(d.cures).nanFix();
     this.Absorb = parseInt(d.absorbHeal).nanFix();
@@ -251,11 +240,9 @@ function mergedData(p, o, e) {
 
     if (o.MaxHitVal == 0 && p.MaxHitVal == 0) {
         o.MaxHitStr = "";
-        o.MaxHitRealVal = 0; 
         o.MaxHitVal = 0;
     } else if (o.MaxHitVal <= p.MaxHitVal) {
         o.MaxHitStr = p.MaxHitStr;
-        o.MaxHitRealVal = p.MaxHitRealVal;
         o.MaxHitVal = p.MaxHitVal;
     }
 
@@ -273,11 +260,9 @@ function mergedData(p, o, e) {
 
     if (o.MaxHealVal == 0 && p.MaxHealVal == 0) {
         o.MaxHealStr = "";
-        o.MaxHealRealVal = 0; 
         o.MaxHealVal = 0;
     } else if (o.MaxHealVal <= p.MaxHealVal) {
         o.MaxHealStr = p.MaxHealStr;
-        o.MaxHealRealVal = p.MaxHealRealVal;
         o.MaxHealVal = p.MaxHealVal;
     }
 
