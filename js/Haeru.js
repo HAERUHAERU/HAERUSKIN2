@@ -367,8 +367,8 @@ function addData(name, td, a) {
         case 'CHeal': case 'Dispel': case 'Absorb': case 'Replenish': case 'Death':
             if (a[name] > 1000000) return addComma((a[name] / 1000).toFixed(0)) + 'k';
             else return addComma(a[name]);
-        case 'MaxHit': return addComma(a.MaxHitRealVal) + '<font class="ex"> / ' + a.MaxHitStr + '</font>';
-        case 'MaxHeal': return addComma(a.MaxHealRealVal) + '<font class="ex"> / ' + a.MaxHealStr + '</font>';
+        case 'MaxHit': return addComma(a.MaxHitVal) + '<font class="ex"> / ' + a.MaxHitStr + '</font>';
+        case 'MaxHeal': return addComma(a.MaxHealVal) + '<font class="ex"> / ' + a.MaxHealStr + '</font>';
         default: return addComma(a[name].toFixed(1 * localStorage.getItem('number'))) + '<font class="ex">%</font>';
     }
 }
