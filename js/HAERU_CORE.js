@@ -170,7 +170,7 @@ function HaeruData(d, e) {
         this.MaxHitStr = "";
     } else {
         this.MaxHitVal = parseInt(d.maxhit.replace(/[^0-9]/g,""));
-        this.MaxHitStr = d.maxhit.replace(/[0-9]/g,"").slice(0,-1);
+        this.MaxHitStr = d.maxhit.replace(/[0-9.,']/g,"").trim().slice(0,-1);
     }
     this.DTaken = parseInt(d.damagetaken).nanFix();
     this.HTaken = parseInt(d.healstaken).nanFix();
@@ -192,7 +192,7 @@ function HaeruData(d, e) {
         this.MaxHealStr = "";
     } else {
         this.MaxHealVal = parseInt(d.maxheal.replace(/[^0-9]/g,""))  
-        this.MaxHealStr = d.maxheal.replace(/[0-9]/g,"").slice(0,-1)
+        this.MaxHealStr = d.maxheal.replace(/[0-9.,']/g,"").trim().slice(0,-1);
     }
     this.Dispel = parseInt(d.cures).nanFix();
     this.Absorb = parseInt(d.absorbHeal).nanFix();
