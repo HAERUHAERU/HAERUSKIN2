@@ -75,26 +75,26 @@ function HaeruData(d, e) {
         var regex = /(?:.*?)\((.*?)\)/im;
         var matches = d.name.match(regex);
 
-    var smnPetsList = ["카벙클 에메랄드", "カーバンクル・エメラルド", "绿宝石兽", "Smaragd-Karfunkel", "Carbuncle émeraude", "Emerald Carbuncle",
-                        "카벙클 토파즈", "カーバンクル・トパーズ", "黄宝石兽", "Topas-Karfunkel", "Carbuncle topaze", "Topaz Carbuncle",
-                        "카벙클 루비", "カーバンクル・ルビー", "红宝石兽", "Rubin-Karfunkel", "Carbuncle rubis", "Ruby Carbuncle",
-                        "가루다 에기", "ガルーダ・エギ", "迦楼罗之灵", "Garuda-Egi",
-                        "이프리트 에기", "イフリート・エギ", "伊弗利特之灵", "Ifrit-Egi",
-                        "타이탄 에기", "タイタン・エギ", "泰坦之灵", "Titan-Egi",
-                        "데미바하무트", "デミ・バハムート", "亚灵神巴哈姆特", "Demi-Bahamut", "デミ・フェニックス",
-                        "데미피닉스", "Demi-Phönix", "Demi-Phénix", "Demi-Phoenix", "亚灵神不死鸟"
-    ];
-    var mchPetsList = ["자동포탑 룩", "オートタレット・ルーク", "车式浮空炮塔", "Selbstschuss-Gyrocopter TURM", "Auto-tourelle Tour", "Rook Autoturret",
-                        "자동포탑 비숍", "オートタレット・ビショップ", "象式浮空炮塔", "Selbstschuss-Gyrocopter LÄUFER", "Auto-tourelle Fou", "Bishop Autoturret",
-                        "オートマトン・クイーン", "Automaton DAME", "Automate Reine", "Automaton Queen", "后式自走人偶"
-    ];
-    var schPetsList = ["요정 에오스", "フェアリー・エオス", "朝日小仙女", "Eos",
-                        "요정 셀레네", "フェアリー・セレネ", "夕月小仙女", "Selene",
-                        "セラフィム", "Seraph", "Séraphin", "炽天使"
-    ];
-    var drkPetsList = ["英雄の影身", "Hochachtung", "Estime", "Esteem", "英雄的掠影"];
-    var ninPetsList = ["分身", "Gedoppeltes Ich", "Ombre", "Bunshin", "분신"];
-    var astPetsList = ["지상의 별", "アーサリースター", "地星", "Earthly Star", "Étoile terrestre", "Irdischer Stern"];
+        var smnPetsList = ["카벙클 에메랄드", "カーバンクル・エメラルド", "绿宝石兽", "Smaragd-Karfunkel", "Carbuncle émeraude", "Emerald Carbuncle",
+            "카벙클 토파즈", "カーバンクル・トパーズ", "黄宝石兽", "Topas-Karfunkel", "Carbuncle topaze", "Topaz Carbuncle",
+            "카벙클 루비", "カーバンクル・ルビー", "红宝石兽", "Rubin-Karfunkel", "Carbuncle rubis", "Ruby Carbuncle",
+            "가루다 에기", "ガルーダ・エギ", "迦楼罗之灵", "Garuda-Egi",
+            "이프리트 에기", "イフリート・エギ", "伊弗利特之灵", "Ifrit-Egi",
+            "타이탄 에기", "タイタン・エギ", "泰坦之灵", "Titan-Egi",
+            "데미바하무트", "デミ・バハムート", "亚灵神巴哈姆特", "Demi-Bahamut", "デミ・フェニックス",
+            "데미피닉스", "Demi-Phönix", "Demi-Phénix", "Demi-Phoenix", "亚灵神不死鸟"
+        ];
+        var mchPetsList = ["자동포탑 룩", "オートタレット・ルーク", "车式浮空炮塔", "Selbstschuss-Gyrocopter TURM", "Auto-tourelle Tour", "Rook Autoturret",
+            "자동포탑 비숍", "オートタレット・ビショップ", "象式浮空炮塔", "Selbstschuss-Gyrocopter LÄUFER", "Auto-tourelle Fou", "Bishop Autoturret",
+            "オートマトン・クイーン", "Automaton DAME", "Automate Reine", "Automaton Queen", "后式自走人偶", "자동인형 퀸"
+        ];
+        var schPetsList = ["요정 에오스", "フェアリー・エオス", "朝日小仙女", "Eos",
+            "요정 셀레네", "フェアリー・セレネ", "夕月小仙女", "Selene",
+            "セラフィム", "Seraph", "Séraphin", "炽天使", "세라핌"
+        ];
+        var drkPetsList = ["영웅의 환영", "英雄の影身", "Hochachtung", "Estime", "Esteem", "英雄的掠影"];
+        var ninPetsList = ["分身", "Gedoppeltes Ich", "Ombre", "Bunshin", "분신"];
+        var astPetsList = ["지상의 별", "アーサリースター", "地星", "Earthly Star", "Étoile terrestre", "Irdischer Stern"];
         
         var petsName = d.name.split(' (')[0];
 
