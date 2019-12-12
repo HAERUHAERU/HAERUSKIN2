@@ -1,28 +1,29 @@
 <html>
+
 <head>
     <meta charset="utf-8">
     <title>[FFXIV] HAERUSKIN 2</title>
     <link rel="stylesheet" type="text/css" href="css/Haeru.css">
 </head>
+
 <body>
     <div id="zone">
         <div class="navbar-fixed">
-            <nav>
-                <div id="menu" onclick="Button(this.id)">
-                    <input type="checkbox" checked="true" />
-                    <img src="images/ui/menu.svg" />
-                </div>
-                <div id="data">
-                    <div></div>
-                </div>
-                <div id="end" onclick="Button(this.id)">
-                    <img src="images/ui/timer.svg" />
-                </div>
-                <div id="history" onclick="viewTab(this.id, 0); Button(this.id)">
-                    <input type="checkbox" />
-                    <img src="images/ui/history.svg" />
-                </div>
-            </nav>
+            <table class="nav">
+                <tr>
+                    <td id="data">
+                        <div></div>
+                    </td>
+                    <td id="end" onclick="Button(this.id)">
+                        <img src="images/ui/timer.svg" /></td>
+                    <td id="history" onclick="viewTab(this.id, 0); Button(this.id)">
+                        <img src="images/ui/history.svg" />
+                        <input type="checkbox" /></td>
+                    <td id="menu" onclick="Button(this.id)">
+                        <img src="images/ui/menu.svg" />
+                        <input type="checkbox" checked="true" /></td>
+                </tr>
+            </table>
             <div id="Header">
                 <div id="DPSHeader">
                     <div id="DPSoldHeader"></div>
@@ -59,7 +60,7 @@
             </div>
         </div>
         <div id="wrap">
-            <table id="menuTable">
+            <table id="menuTable" style="display: none;">
                 <tr>
                     <td id="DPS" onclick="viewTab(this.id, 0)">
                         <img/>
