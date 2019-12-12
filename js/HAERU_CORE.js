@@ -1,5 +1,5 @@
 var myName = "-";
-Number.prototype.nanFix = function () {
+Number.prototype.nanFix = function() {
     if (this == "" || this == undefined || this == Infinity || this == "--")
         return 0;
     else
@@ -45,13 +45,13 @@ function LastHaeruData(e, sortkey) {
         if (sortkey == 'DPS') {
             if (this.maxDamage < a.Damage)
                 this.maxDamage = a.Damage;
-        }
-        else {
+        } else {
             if (this.maxDamage < a.Healed)
                 this.maxDamage = a.Healed;
         }
     }
 }
+
 function getData(d, pets, sortkey) {
     var member = d.Combatant;
     var encounter = d.Encounter;
@@ -70,6 +70,7 @@ function getData(d, pets, sortkey) {
     }
     return sortObject(member, sortkey);
 }
+
 function HaeruData(d, e) {
     if (d.Job == "") {
         var regex = /(?:.*?)\((.*?)\)/im;
@@ -95,7 +96,7 @@ function HaeruData(d, e) {
         var drkPetsList = ["영웅의 환영", "英雄の影身", "Hochachtung", "Estime", "Esteem", "英雄的掠影"];
         var ninPetsList = ["分身", "Gedoppeltes Ich", "Ombre", "Bunshin", "분신"];
         var astPetsList = ["지상의 별", "アーサリースター", "地星", "Earthly Star", "Étoile terrestre", "Irdischer Stern"];
-        
+
         var petsName = d.name.split(' (')[0];
 
         if (smnPetsList.indexOf(petsName) > -1) {
@@ -103,44 +104,37 @@ function HaeruData(d, e) {
             this.Class = "SMN";
             if (matches != null)
                 this.petOwner = matches[1];
-        }
-        else if (schPetsList.indexOf(petsName) > -1) {
+        } else if (schPetsList.indexOf(petsName) > -1) {
             this.Job = "AVA";
             this.Class = "SCH";
             if (matches != null)
                 this.petOwner = matches[1];
-        }
-        else if (mchPetsList.indexOf(petsName) > -1) {
+        } else if (mchPetsList.indexOf(petsName) > -1) {
             this.Job = "AVA";
             this.Class = "MCH";
             if (matches != null)
                 this.petOwner = matches[1];
-        }
-        else if (drkPetsList.indexOf(petsName) > -1) {
+        } else if (drkPetsList.indexOf(petsName) > -1) {
             this.Job = "AVA";
             this.Class = "DRK";
             if (matches != null)
                 this.petOwner = matches[1];
-        }
-        else if (ninPetsList.indexOf(petsName) > -1) {
+        } else if (ninPetsList.indexOf(petsName) > -1) {
             this.Job = "AVA";
             this.Class = "NIN";
             if (matches != null)
                 this.petOwner = matches[1];
-        }        
-        else if (astPetsList.indexOf(petsName) > -1) {
+        } else if (astPetsList.indexOf(petsName) > -1) {
             this.Job = "AVA";
             this.Class = "AST";
             if (matches != null)
                 this.petOwner = matches[1];
-        }
-        else if (d.name.indexOf("(") > -1 ){
+        } else if (d.name.indexOf("(") > -1) {
             this.Job = "CBO";
             this.Class = "CBO";
             if (matches != null)
                 this.petOwner = matches[1];
-        }        
-        else {
+        } else {
             this.Job = "LMB";
             this.Class = "LMB";
         }
@@ -179,8 +173,8 @@ function HaeruData(d, e) {
         this.MaxHitVal = 0;
         this.MaxHitStr = "";
     } else {
-        this.MaxHitVal = parseInt(d.maxhit.replace(/[^0-9]/g,""));
-        this.MaxHitStr = d.maxhit.replace(/[0-9.,']/g,"").trim().slice(0,-1);
+        this.MaxHitVal = d.MAXHIT
+        this.MaxHitStr = d.maxhit.replace(/[0-9.,']/g, "").trim().slice(0, -1);
     }
     this.DTaken = parseInt(d.damagetaken).nanFix();
     this.HTaken = parseInt(d.healstaken).nanFix();
@@ -201,14 +195,15 @@ function HaeruData(d, e) {
         this.MaxHealVal = 0;
         this.MaxHealStr = "";
     } else {
-        this.MaxHealVal = parseInt(d.maxheal.replace(/[^0-9]/g,""))  
-        this.MaxHealStr = d.maxheal.replace(/[0-9.,']/g,"").trim().slice(0,-1);
+        this.MaxHealVal = d.MAXHEAL
+        this.MaxHealStr = d.maxheal.replace(/[0-9.,']/g, "").trim().slice(0, -1);
     }
     this.Dispel = parseInt(d.cures).nanFix();
     this.Absorb = parseInt(d.absorbHeal).nanFix();
     this.Replenish = parseInt(d.powerheal).nanFix();
     this.Death = parseInt(d.deaths).nanFix();
 }
+
 function putPetOwner(d) {
     var nameList = [];
     for (var i in d) {
@@ -225,6 +220,7 @@ function putPetOwner(d) {
         }
     }
 }
+
 function mergedData(p, o, e) {
     o.DURATION = (o.DURATION >= p.DURATION) ? o.DURATION : p.DURATION;
     o.PTime = (o.DURATION >= p.DURATION) ? o.PTime : p.PTime;
@@ -280,13 +276,14 @@ function mergedData(p, o, e) {
     o.Absorb = parseInt(o.Absorb + p.Absorb).nanFix();
     o.Replenish = parseInt(o.Replenish + p.Replenish).nanFix();
 }
+
 function sortObject(d, sortkey) {
     var sorted = {},
         key, a = [];
     for (key in d) {
         if (d.hasOwnProperty(key)) a.push(key);
     }
-    a.sort(function (a, b) {
+    a.sort(function(a, b) {
         return d[b].merged[sortkey] - d[a].merged[sortkey];
     });
     for (key = 0; key < a.length; key++) {
