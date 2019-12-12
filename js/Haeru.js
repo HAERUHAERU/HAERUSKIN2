@@ -1,6 +1,12 @@
-var lastData = null, lastDPS = null, lastHPS = null, langFlag = '', list = '';
-var barSize = []; var encounterArray = []; var encounterCount = 1;
-$(document).ready(function () {
+var lastData = null,
+    lastDPS = null,
+    lastHPS = null,
+    langFlag = '',
+    list = '';
+var barSize = [];
+var encounterArray = [];
+var encounterCount = 1;
+$(document).ready(function() {
     //localStorage.clear();
     var value = {
         lang: 1,
@@ -15,7 +21,8 @@ $(document).ready(function () {
     }
     if (!localStorage.getItem('list')) {
         localStorage.setItem('list', JSON.stringify(lang.elements))
-    } list = JSON.parse(localStorage.getItem('list'))
+    }
+    list = JSON.parse(localStorage.getItem('list'))
     for (var i in value) {
         if (!localStorage.getItem(i))
             localStorage.setItem(i, value[i]);
@@ -23,7 +30,10 @@ $(document).ready(function () {
             case 'tab':
                 viewTab(localStorage.getItem('tab'), 'init');
                 break;
-            case 'number': case 'pets': case 'name': case 'lang':
+            case 'number':
+            case 'pets':
+            case 'name':
+            case 'lang':
                 if (localStorage.getItem(i) == 1) {
                     $('#' + i).find('input').prop('checked', true);
                 } else {
@@ -36,20 +46,21 @@ $(document).ready(function () {
     $('#wrap').css('height', 'calc(100% - ' + ($('.navbar-fixed').height() / 10 - 0.1) + 'rem)')
     $('#data font, #menuTable td div').css('color', lang['thema'][localStorage.getItem('thema')].color);
 });
-$('nav').on({
-    mouseover: function () {
-        $('nav,.tableHeader').css('background', 'rgba(26,26,26,1)');
+$('.nav').on({
+    mouseover: function() {
+        $('.nav,.tableHeader').css('background', 'rgba(26,26,26,1)');
     },
-    mouseleave: function () {
+    mouseleave: function() {
         if ($('#menu').find('input').prop('checked') == true || $('#edit div').html() == '★')
-            $('nav,.tableHeader').css('background', 'rgba(26,26,26,1)');
+            $('.nav,.tableHeader').css('background', 'rgba(26,26,26,1)');
         else
-            $('nav,.tableHeader').css('background', bgColor())
+            $('.nav,.tableHeader').css('background', bgColor())
     }
 });
-$(window).resize(function () {
+$(window).resize(function() {
     $('#wrap').css('height', 'calc(100% - ' + ($('.navbar-fixed').height() / 10 - 0.1) + 'rem)')
 });
+
 function swapLang(val) {
     var tmp = '';
     if (val == 0) {
@@ -66,8 +77,7 @@ function swapLang(val) {
         } else {
             if (i == 'size' || i == 'opacity' || i == 'lang')
                 $('#' + i).find('div').text(lang[i][localStorage.getItem(i)]);
-            else if (i == 'DPS' || i == 'HPS' || i == 'BM' || i == 'edit') { }
-            else if (i == 'elements')
+            else if (i == 'DPS' || i == 'HPS' || i == 'BM' || i == 'edit') {} else if (i == 'elements')
                 createEditTable()
             else
                 $('#' + i).find('div').text(lang[i][localStorage.getItem(i)][langFlag]);
@@ -76,6 +86,7 @@ function swapLang(val) {
     $('#menuTable tr:first div').text('');
     $('#' + localStorage.getItem('tab')).find('div').text('★');
 }
+
 function viewTab(val, flag) {
     if (val == 'edit') {
         createEditTable();
@@ -99,6 +110,7 @@ function viewTab(val, flag) {
     } else
         $('nav').trigger('mouseover');
 }
+
 function createEditTable() {
     var html = '';
     for (var i in list) {
@@ -112,7 +124,7 @@ function createEditTable() {
         html += div;
     }
     $('#editBody').html(html)
-    $('.tablebody.edit td.cell_2').on('click', function () {
+    $('.tablebody.edit td.cell_2').on('click', function() {
         var key = $(this).parent().parent().parent().parent().attr('id')
         if ($(this).find('img').attr('src').split('_')[1] == 'true.svg') {
             list[key][$(this).attr('name')] = false
@@ -120,12 +132,13 @@ function createEditTable() {
         } else if ($(this).find('img').attr('src').split('_')[1] == 'false.svg') {
             list[key][$(this).attr('name')] = true
             $(this).find('img').attr('src', 'images/ui/check_true.svg');
-        } else { }
+        } else {}
         localStorage.setItem('list', JSON.stringify(list))
     });
 }
+
 function Button(id, num) {
-    $('#' + id + ' img').removeClass('pulse animated').addClass('pulse animated').one('animationend', function () {
+    $('#' + id + ' img').removeClass('pulse animated').addClass('pulse animated').one('animationend', function() {
         $(this).removeClass('pulse animated');
     });
     switch (id) {
@@ -137,7 +150,7 @@ function Button(id, num) {
                     viewTab(localStorage.getItem('tab'))
                 } else {
                     $('#Header,#Body').css('display', 'none');
-                    $('#menuTable').css('display', 'block');
+                    $('#menuTable').show();
                     $('#menuTable').addClass("animated slideInDown");
                     $('#menu img').attr('src', 'images/ui/close.svg');
                     $('.navbar-fixed').css('height', '3.4rem');
@@ -146,7 +159,7 @@ function Button(id, num) {
                 }
             } else {
                 $('#' + id).find('input').prop('checked', false);
-                $('#menuTable').css('display', 'none');
+                $('#menuTable').hide();
                 $('#menuTable').removeClass("animated slideInDown");
                 $('#menu img').attr('src', 'images/ui/menu.svg');
                 $('.navbar-fixed').css('height', '4.9rem');
@@ -156,7 +169,7 @@ function Button(id, num) {
                 else {
                     $('#zone').css({
                         'background-image': 'url(./images/handle.svg)',
-                        'background-size': '3rem 3rem',
+                        'background-size': '1rem 1rem',
                         'background-position': 'bottom right',
                         'background-repeat': 'no-repeat',
                         'background-attachment': 'fixed'
@@ -183,7 +196,10 @@ function Button(id, num) {
         case 'end':
             window.OverlayPluginApi.endEncounter();
             break;
-        case 'number': case 'pets': case 'name': case 'lang': // 2 
+        case 'number':
+        case 'pets':
+        case 'name':
+        case 'lang': // 2 
             if ($('#' + id).find('input').prop('checked') == false) {
                 localStorage.setItem(id, 1);
                 $('#' + id).find('input').prop('checked', true);
@@ -198,7 +214,8 @@ function Button(id, num) {
                     swapLang(localStorage.getItem("lang"));
             }
             break;
-        case 'graph': case 'thema':
+        case 'graph':
+        case 'thema':
             if (localStorage.getItem(id) == num) {
                 localStorage.setItem(id, 1);
                 $('#' + id).find('div').text(lang[id][1][langFlag]);
@@ -209,7 +226,8 @@ function Button(id, num) {
             if (id == 'thema')
                 $('#data font, #menuTable td div').css('color', lang[id][localStorage.getItem(id)].color);
             break;
-        case 'opacity': case 'size':
+        case 'opacity':
+        case 'size':
             if (localStorage.getItem(id) == num) {
                 localStorage.setItem(id, 1);
                 $('#' + id).find('div').text(lang[id][1]);
@@ -222,11 +240,12 @@ function Button(id, num) {
             break;
     }
 }
-document.addEventListener("onOverlayDataUpdate", function (e) {
+document.addEventListener("onOverlayDataUpdate", function(e) {
     lastData = e.detail;
     update();
     saveLog();
 });
+
 function update() {
     if (lastData === null) return;
     else {
@@ -238,10 +257,12 @@ function update() {
         $('nav').trigger('mouseleave');
     }
 }
+
 function onCombatDataUpdate(flag) {
     if (flag == 'HPS') last = lastHPS;
     else last = lastDPS;
-    var myRank = 0, party = 0;
+    var myRank = 0,
+        party = 0;
     if (last.Combatant["YOU"] != undefined || last.Combatant["YOU"] != null) {
         var tableHeader = document.getElementById(flag + "Header");
         var oldHeader = document.getElementById(flag + "oldHeader");
@@ -255,8 +276,7 @@ function onCombatDataUpdate(flag) {
         var newBody = document.createElement("div");
         for (var d in last.Combatant) {
             var a = last.Combatant[d].merged;
-            if (localStorage.getItem('pets') == 1 && a.Job == 'AVA' || a.Job == '' || a.Job == 'error') { }
-            else {
+            if (localStorage.getItem('pets') == 1 && a.Job == 'AVA' || a.Job == '' || a.Job == 'error') {} else {
                 createTableBody(newBody, a);
                 party++;
                 if (a.Name == "YOU")
@@ -269,8 +289,7 @@ function onCombatDataUpdate(flag) {
         for (var d in last.Combatant) {
             var a = last.Combatant[d].merged;
             var b = last.Combatant[d].Haeru;
-            if (localStorage.getItem('pets') == 1 && a.Job == 'AVA' || a.Job == '' || a.Job == 'error') { }
-            else {
+            if (localStorage.getItem('pets') == 1 && a.Job == 'AVA' || a.Job == '' || a.Job == 'error') {} else {
                 inputGraph(last.maxDamage, a, b, flag);
             }
         }
@@ -278,6 +297,7 @@ function onCombatDataUpdate(flag) {
     $('#data').html("<font>" + lastData.Encounter.duration + "</font> " + lastData.Encounter.title + '　<font>RD</font> ' + addComma(last.RDPS) + '　<font>RH</font> ' + addComma(last.RHPS) + '　<font>(' + myRank + '/' + party + ')</font>');
     $('#data font, #menuTable td div').css('color', lang['thema'][localStorage.getItem('thema')].color);
 }
+
 function createTableHeader(newHeader, a) {
     var tableHeader = document.createElement("TABLE");
     tableHeader.className = "tableHeader";
@@ -291,6 +311,7 @@ function createTableHeader(newHeader, a) {
     }
     newHeader.appendChild(tableHeader)
 }
+
 function createTableBody(newBody, a) {
     var wrap = document.createElement("div");
     wrap.id = a.Name.replace(/ /g, "").replace("(", "").replace(")", "").replace(/'/g, "_");
@@ -333,6 +354,7 @@ function createTableBody(newBody, a) {
     wrap.appendChild(line);
     newBody.appendChild(wrap)
 }
+
 function addData(name, td, a) {
     switch (name) {
         case 'Job':
@@ -357,25 +379,56 @@ function addData(name, td, a) {
                     }
                 }
             }
-        case 'Time': case 'PTime': case 'PARRY': case 'BLOCK':
+        case 'Time':
+        case 'PTime':
+        case 'PARRY':
+        case 'BLOCK':
             return a[name];
-        case 'PDPS': case 'Last10': case 'Last30': case 'Last60': case 'Last180': case 'DPS': case 'HPS':
+        case 'PDPS':
+        case 'Last10':
+        case 'Last30':
+        case 'Last60':
+        case 'Last180':
+        case 'DPS':
+        case 'HPS':
             if (a[name] > 10000) return addComma((a[name] / 1000).toFixed(2 * localStorage.getItem('number'))) + 'k'
             else return addComma(a[name].toFixed(2 * localStorage.getItem('number')));
-        case 'Damage': case 'Swing': case 'Hit': case 'DHit': case 'CHit': case 'CDHit': case 'Miss': case 'Avoid':
-        case 'DTaken': case 'HTaken': case 'Healed': case 'EffHeal': case 'DShield': case 'OverHeal': case 'Heal':
-        case 'CHeal': case 'Dispel': case 'Absorb': case 'Replenish': case 'Death':
+        case 'Damage':
+        case 'Swing':
+        case 'Hit':
+        case 'DHit':
+        case 'CHit':
+        case 'CDHit':
+        case 'Miss':
+        case 'Avoid':
+        case 'DTaken':
+        case 'HTaken':
+        case 'Healed':
+        case 'EffHeal':
+        case 'DShield':
+        case 'OverHeal':
+        case 'Heal':
+        case 'CHeal':
+        case 'Dispel':
+        case 'Absorb':
+        case 'Replenish':
+        case 'Death':
             if (a[name] > 1000000) return addComma((a[name] / 1000).toFixed(0)) + 'k';
             else return addComma(a[name]);
-        case 'MaxHit': return addComma(a.MaxHitVal) + '<font class="ex"> / ' + a.MaxHitStr + '</font>';
-        case 'MaxHeal': return addComma(a.MaxHealVal) + '<font class="ex"> / ' + a.MaxHealStr + '</font>';
-        default: return addComma(a[name].toFixed(1 * localStorage.getItem('number'))) + '<font class="ex">%</font>';
+        case 'MaxHit':
+            return addComma(a.MaxHitVal) + '<font class="ex"> / ' + a.MaxHitStr + '</font>';
+        case 'MaxHeal':
+            return addComma(a.MaxHealVal) + '<font class="ex"> / ' + a.MaxHealStr + '</font>';
+        default:
+            return addComma(a[name].toFixed(1 * localStorage.getItem('number'))) + '<font class="ex">%</font>';
     }
 }
+
 function addComma(num) {
     if (num == 'NaN' || num == undefined || num == Infinity || num == '--') return 0;
     else return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
 }
+
 function addClassName(name, td) {
     if (name == 'Job') return 'cell_0'
     else if (name == 'Name') return 'cell_1'
@@ -384,6 +437,7 @@ function addClassName(name, td) {
     else if (name == 'MaxHeal' || name == 'MaxHit') return 'cell_4'
     else return 'cell_5'
 }
+
 function inputGraph(maxDamage, a, b, flag) {
     //info a=merge, b=owner 
     var userName = a.Name.replace(/ /g, "").replace("(", "").replace(")", "").replace(/'/g, "_");
@@ -427,7 +481,11 @@ function inputGraph(maxDamage, a, b, flag) {
     //opacity
     $('#' + flag + 'Body').find('#' + userName).find('.bar, .pet, .oh, .ds').css('opacity', parseInt(localStorage.getItem('opacity')) * 0.2)
     $('#' + flag + 'Body').find('#' + userName).find('.barBg').css('opacity', parseInt(localStorage.getItem('opacity')) * 0.25 - 0.25)
+
+    //Header
+    $('.tableHeader td, .nav').css('background', bgColor());
 }
+
 function graphAnimate(width, bar, category, flag, userName) {
     if (barSize[userName + category + flag] == undefined) {
         $('#' + flag + 'Body').find('#' + userName).find('.' + bar).css('width', 0 + '%');
@@ -438,64 +496,161 @@ function graphAnimate(width, bar, category, flag, userName) {
     $('#' + flag + 'Body').find('#' + userName).find('.' + bar).animate({ width: width + '%' });
     barSize[userName + category + flag] = width;
 }
+
 function graphColor(Job, Name) {
     if (localStorage.getItem('thema') == 1) {
         switch (Job) {
-            case 'GLA': case 'GLD': case 'PLD': return '#7B9AA2'
-            case 'WAR': case 'MRD': return '#A91A16'
-            case 'DRK': return '#682531'
-            case 'GNB': return '#796D30'
-            case 'WHM': case 'CNJ': return '#BDBDBD'
-            case 'SCH': return '#32307B'
-            case 'AST': return '#B1561C'
-            case 'MNK': case 'PGL': case "PUG": return '#B38915'
-            case 'DRG': case 'LNC': return '#3752D8'
-            case 'NIN': case 'ROG': return '#EE2E48'
-            case 'SAM': return '#E45A0F'
-            case 'BLM': case 'THM': return '#674598'
-            case 'SMN': case 'ACN': return '#32670B'
-            case 'RDM': return '#AC2997'
-            case 'BLU': return '#183D9A'
-            case 'BRD': case 'ARC': return '#ADC551'
-            case 'MCH': return '#148AA9'
-            case 'DNC': return '#E2B0AF'
-            case 'LMB': return '#FFBB00'
-            case 'CBO': return '#757575'
-            default: return '#353535'
+            case 'GLA':
+            case 'GLD':
+            case 'PLD':
+                return '#7B9AA2'
+            case 'WAR':
+            case 'MRD':
+                return '#A91A16'
+            case 'DRK':
+                return '#682531'
+            case 'GNB':
+                return '#796D30'
+            case 'WHM':
+            case 'CNJ':
+                return '#BDBDBD'
+            case 'SCH':
+                return '#32307B'
+            case 'AST':
+                return '#B1561C'
+            case 'MNK':
+            case 'PGL':
+            case "PUG":
+                return '#B38915'
+            case 'DRG':
+            case 'LNC':
+                return '#3752D8'
+            case 'NIN':
+            case 'ROG':
+                return '#EE2E48'
+            case 'SAM':
+                return '#E45A0F'
+            case 'BLM':
+            case 'THM':
+                return '#674598'
+            case 'SMN':
+            case 'ACN':
+                return '#32670B'
+            case 'RDM':
+                return '#AC2997'
+            case 'BLU':
+                return '#183D9A'
+            case 'BRD':
+            case 'ARC':
+                return '#ADC551'
+            case 'MCH':
+                return '#148AA9'
+            case 'DNC':
+                return '#E2B0AF'
+            case 'LMB':
+                return '#FFBB00'
+            case 'CBO':
+                return '#757575'
+            default:
+                return '#353535'
         }
     } else if (localStorage.getItem('thema') == 2) {
-        $('#Body .barBg, #Header .tableHeader, nav').css('background', 'rgba(255,255,255, .1)')
+        $('#Body .barBg, .tableHeader, .nav').css('background', 'rgba(255,255,255, .1)')
         switch (Job) {
-            case 'GLA': case 'GLD': case 'PLD': return '#bdd2cb'
-            case 'WAR': case 'MRD': return '#f8a185'
-            case 'DRK': return '#e9c2c7'
-            case 'GNB': return '#a49e7c'
-            case 'WHM': case 'CNJ': return '#f3f5e7'
-            case 'SCH': return '#b8b8d4'
-            case 'AST': return '#e5b99d'
-            case 'MNK': case 'PGL': case "PUG": return '#cec0a3'
-            case 'DRG': case 'LNC': return '#abc3e5'
-            case 'NIN': case 'ROG': return '#fbc1b3'
-            case 'SAM': return '#fec983'
-            case 'BLM': case 'THM': return '#c9b8da'
-            case 'SMN': case 'ACN': return '#82c99d'
-            case 'RDM': return '#f7bdcb'
-            case 'BLU': return '#4db3fd'
-            case 'BRD': case 'ARC': return '#d4e5a1'
-            case 'MCH': return '#a2d5c6'
-            case 'DNC': return '#f3cecd'
-            case 'LMB': return '#fdf5a4'
-            case 'CBO': return '#b8b8b8'
-            default: return '#6e6e6e'
+            case 'GLA':
+            case 'GLD':
+            case 'PLD':
+                return '#bdd2cb'
+            case 'WAR':
+            case 'MRD':
+                return '#f8a185'
+            case 'DRK':
+                return '#e9c2c7'
+            case 'GNB':
+                return '#a49e7c'
+            case 'WHM':
+            case 'CNJ':
+                return '#f3f5e7'
+            case 'SCH':
+                return '#b8b8d4'
+            case 'AST':
+                return '#e5b99d'
+            case 'MNK':
+            case 'PGL':
+            case "PUG":
+                return '#cec0a3'
+            case 'DRG':
+            case 'LNC':
+                return '#abc3e5'
+            case 'NIN':
+            case 'ROG':
+                return '#fbc1b3'
+            case 'SAM':
+                return '#fec983'
+            case 'BLM':
+            case 'THM':
+                return '#c9b8da'
+            case 'SMN':
+            case 'ACN':
+                return '#82c99d'
+            case 'RDM':
+                return '#f7bdcb'
+            case 'BLU':
+                return '#4db3fd'
+            case 'BRD':
+            case 'ARC':
+                return '#d4e5a1'
+            case 'MCH':
+                return '#a2d5c6'
+            case 'DNC':
+                return '#f3cecd'
+            case 'LMB':
+                return '#fdf5a4'
+            case 'CBO':
+                return '#b8b8b8'
+            default:
+                return '#6e6e6e'
         }
     } else if (localStorage.getItem('thema') == 3) {
         switch (Job) {
-            case 'GLA': case 'GLD': case 'PLD': case 'WAR': case 'MRD': case 'DRK': case 'GNB': return '#475ece'
-            case 'WHM': case 'CNJ': case 'SCH': case 'AST': return '#467837'
-            case 'MNK': case 'PGL': case "PUG": case 'DRG': case 'LNC': case 'SAM': case 'BLM': case 'THM': case 'SMN': case 'ACN': case 'RDM': case 'BLU': case 'BRD': case 'ARC': case 'MCH': case 'DNC': case 'NIN': case 'ROG': return '#813b3c'
-            case 'LMB': return '#FFBB00'
-            case 'CBO': return '#757575'
-            default: return '#353535'
+            case 'GLA':
+            case 'GLD':
+            case 'PLD':
+            case 'WAR':
+            case 'MRD':
+            case 'DRK':
+            case 'GNB':
+                return '#475ece'
+            case 'WHM':
+            case 'CNJ':
+            case 'SCH':
+            case 'AST':
+                return '#467837'
+            case 'MNK':
+            case 'PGL':
+            case "PUG":
+            case 'DRG':
+            case 'LNC':
+            case 'SAM':
+            case 'BLM':
+            case 'THM':
+            case 'SMN':
+            case 'ACN':
+            case 'RDM':
+            case 'BLU':
+            case 'BRD':
+            case 'ARC':
+            case 'MCH':
+            case 'DNC':
+            case 'NIN':
+            case 'ROG':
+                return '#813b3c'
+            case 'LMB':
+                return '#FFBB00'
+            case 'CBO':
+                return '#757575'
+            default:
+                return '#353535'
         }
     } else if (localStorage.getItem('thema') == 4) {
         if (Name.indexOf("YOU") > -1 || Name.indexOf(myName) > -1) return '#0db9ab'
@@ -503,35 +658,67 @@ function graphColor(Job, Name) {
     } else if (localStorage.getItem('thema') == 5) {
         $('#Body').find('.barBg, .bar, .pet, .ds, .oh').css('background', 'rgba(0,0,0,0)')
         $('#Body .divider').css('background', 'rgba(255,255,255,.1)')
-        $('nav, #Header .tableHeader').css('background', 'rgba(0,0,0,0)')
+        $('.nav, .tableHeader').css('background', 'rgba(0,0,0,0)')
         $('.DPS, .HPS').css('color', '#68efad');
         $('.Death').css('color', '#ff5252');
         $('#Body').find('#YOU .tableBody td, .myPet .tableBody td').css('color', '#EEFF41');
         $('#zone').css('background', 'transparent');
     } else if (localStorage.getItem('thema') == 6) {
-        $('#Body .barBg, #Header .tableHeader, nav').css('background', 'rgba(255,255,255, .1)')
+        $('#Body .barBg, .tableHeader, .nav').css('background', 'rgba(255,255,255, .1)')
         switch (Job) {
-            case 'GLA': case 'GLD': case 'PLD': return '#fda4ba'
-            case 'WAR': case 'MRD': return '#fec5e5'
-            case 'DRK': return '#f69acd'
-            case 'GNB': return '#da86b4'
-            case 'WHM': case 'CNJ': return '#fb9483'
-            case 'SCH': return '#fdab9f'
-            case 'AST': return '#f2b8c6'
-            case 'MNK': case 'PGL': case "PUG": return '#fa86c3'
-            case 'DRG': case 'LNC': return '#ff1695'
-            case 'NIN': case 'ROG': return '#fc46aa'
-            case 'SAM': return '#fe5da9'
-            case 'BLM': case 'THM': return '#f25278'
-            case 'SMN': case 'ACN': return '#f26b8b'
-            case 'RDM': return '#f69abf'
-            case 'BLU': return '#ec8fa5'
-            case 'BRD': case 'ARC': return '#fe7f9c'
-            case 'MCH': return '#fc94af'
-            case 'DNC': return '#e8acd2'
-            case 'LMB': return '#fc4c4e'
-            case 'CBO': return '#9e4245'
-            default: return '#6e6e6e'
+            case 'GLA':
+            case 'GLD':
+            case 'PLD':
+                return '#fda4ba'
+            case 'WAR':
+            case 'MRD':
+                return '#fec5e5'
+            case 'DRK':
+                return '#f69acd'
+            case 'GNB':
+                return '#da86b4'
+            case 'WHM':
+            case 'CNJ':
+                return '#fb9483'
+            case 'SCH':
+                return '#fdab9f'
+            case 'AST':
+                return '#f2b8c6'
+            case 'MNK':
+            case 'PGL':
+            case "PUG":
+                return '#fa86c3'
+            case 'DRG':
+            case 'LNC':
+                return '#ff1695'
+            case 'NIN':
+            case 'ROG':
+                return '#fc46aa'
+            case 'SAM':
+                return '#fe5da9'
+            case 'BLM':
+            case 'THM':
+                return '#f25278'
+            case 'SMN':
+            case 'ACN':
+                return '#f26b8b'
+            case 'RDM':
+                return '#f69abf'
+            case 'BLU':
+                return '#ec8fa5'
+            case 'BRD':
+            case 'ARC':
+                return '#fe7f9c'
+            case 'MCH':
+                return '#fc94af'
+            case 'DNC':
+                return '#e8acd2'
+            case 'LMB':
+                return '#fc4c4e'
+            case 'CBO':
+                return '#9e4245'
+            default:
+                return '#6e6e6e'
         }
     } else if (localStorage.getItem('thema') == 7) {
         $('#Body').find('.barBg').css('background', 'rgba(0,0,0,0.1)')
@@ -541,6 +728,7 @@ function graphColor(Job, Name) {
             return '#EAEAEA'
     }
 }
+
 function bgColor() {
     if (localStorage.getItem("thema") == 2 || localStorage.getItem("thema") == 6)
         return 'rgba(255,255,255,0.1)'
@@ -553,6 +741,7 @@ function bgColor() {
     else
         return 'rgba(26,26,26,' + (parseInt(localStorage.getItem('opacity')) * 0.25 - 0.25) + ')'
 }
+
 function saveLog() {
     if (lastDPS == null)
         return;
@@ -567,10 +756,11 @@ function saveLog() {
                     encounterArray.shift()
                 else historyAddRow()
             } else historyAddRow()
-            barSize = new Array();  //초기화            
+            barSize = new Array(); //초기화            
         }
     }
 }
+
 function historyAddRow() {
     var wrap = document.getElementById('historyBody');
     var newHistory = document.createElement("div");
@@ -624,13 +814,13 @@ function historyAddRow() {
     else wrap.insertBefore(newHistory, oldHistory);
     newHistory.id = 'historyoldBody';
     $('#historyoldBody').on({
-        mouseover: function () {
+        mouseover: function() {
             $(this).find('.barBg').css('background', lang.thema[localStorage.getItem('thema')].color)
         },
-        mouseleave: function () {
+        mouseleave: function() {
             $(this).find('.barBg').css('background', bgColor())
         },
-        click: function () {
+        click: function() {
             $('#historyBody').find('td#viewIcon').html('');
             var listName = $(this).find('table').attr("id");
             for (var i in encounterArray) {
