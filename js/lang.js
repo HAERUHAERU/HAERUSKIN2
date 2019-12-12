@@ -4,8 +4,8 @@ lang = {
     BM: '',
     edit: '',
     data: {
-        kr: '[191213] 해루스킨 2 - 모그리/해루',
-        en: '[191213] HAERUSKIN 2 - KR Moogle/HAERU(해루)'
+        kr: '[191213] 해루스킨 2 by 해루@모그리',
+        en: '[191213] HAERUSKIN 2 by KR/HAERU@Moogle'
     },
     size: {
         1: '55.5%',
@@ -52,7 +52,7 @@ lang = {
             color: '#B39DDB'
         },
         6: {
-            kr: '벚꽃',
+            kr: '벚꽃엔딩',
             en: 'Cherry Blossom',
             color: '#fa86c3'
         },
@@ -150,7 +150,7 @@ lang = {
         Time: {
             title: "Time",
             ex: {
-                kr: '전투 로그 집계 시간 (파티 첫 공격 기준, 공식)',
+                kr: '전투 로그 집계 시간 (파티 첫 공격 기준)',
                 en: 'The duration of the encounter.'
             },
             DPS: false,
@@ -210,7 +210,7 @@ lang = {
         Dper: {
             title: "D%",
             ex: {
-                kr: '전체 피해량 중 내가 기여한 피해량 (%)',
+                kr: '총 피해량 중 내 캐릭터의 기여율 (%)',
                 en: 'This value represents the percent share of all damage done by allies in this encounter.'
             },
             DPS: true,
@@ -227,16 +227,6 @@ lang = {
             HPS: 'block',
             BM: true
         },
-        ACC: {
-            title: "ACC",
-            ex: {
-                kr: '명중률 (%)',
-                en: 'The percentage of hits to swings.'
-            },
-            DPS: false,
-            HPS: 'block',
-            BM: false
-        },
         Swing: {
             title: "Swing",
             ex: {
@@ -252,6 +242,36 @@ lang = {
             ex: {
                 kr: '공격 적중 횟수',
                 en: 'The number of attack attempts that produced damage.'
+            },
+            DPS: false,
+            HPS: 'block',
+            BM: false
+        },
+        Miss: {
+            title: "Miss",
+            ex: {
+                kr: '공격 빗나감 횟수',
+                en: 'The number of auto-attacks of CAs that produced a miss message.'
+            },
+            DPS: true,
+            HPS: 'block',
+            BM: false
+        },
+        Avoid: {
+            title: "Avoid",
+            ex: {
+                kr: '공격 실패 횟수 (적의 저항, 반사, 막기, 회피 등)',
+                en: 'Any type of failed attack that was not a miss.<br>This includes resists, reflects, blocks, dodging, etc.'
+            },
+            DPS: false,
+            HPS: 'block',
+            BM: false
+        },
+        ACC: {
+            title: "ACC",
+            ex: {
+                kr: '명중률 (%)',
+                en: 'The percentage of hits to swings.'
             },
             DPS: false,
             HPS: 'block',
@@ -317,26 +337,6 @@ lang = {
             HPS: 'block',
             BM: true
         },
-        Miss: {
-            title: "Miss",
-            ex: {
-                kr: '공격 빗나감 횟수',
-                en: 'The number of auto-attacks of CAs that produced a miss message.'
-            },
-            DPS: true,
-            HPS: 'block',
-            BM: false
-        },
-        Avoid: {
-            title: "Avoid",
-            ex: {
-                kr: '공격 실패 횟수 (적의 저항, 반사, 막기, 회피 등)',
-                en: 'Any type of failed attack that was not a miss.<br>This includes resists, reflects, blocks, dodging, etc.'
-            },
-            DPS: false,
-            HPS: 'block',
-            BM: false
-        },
         MaxHit: {
             title: "MaxHit",
             ex: {
@@ -346,46 +346,6 @@ lang = {
             DPS: true,
             HPS: 'block',
             BM: true
-        },
-        DTaken: {
-            title: "D.Taken",
-            ex: {
-                kr: '받은 피해량',
-                en: 'The amount of damage this combatant received.'
-            },
-            DPS: false,
-            HPS: 'block',
-            BM: false
-        },
-        HTaken: {
-            title: "H.Taken",
-            ex: {
-                kr: '받은 치유량',
-                en: 'The amount of healing this combatant received.'
-            },
-            DPS: false,
-            HPS: 'block',
-            BM: false
-        },
-        PARRY: {
-            title: "PARRY",
-            ex: {
-                kr: '받아넘기기 발동률 (%)',
-                en: 'The percentage of hits that were parried.'
-            },
-            DPS: false,
-            HPS: 'block',
-            BM: false
-        },
-        BLOCK: {
-            title: "BLOCK",
-            ex: {
-                kr: '방패막기 발동률 (%)',
-                en: 'The percentage of hits that were blocked.'
-            },
-            DPS: false,
-            HPS: 'block',
-            BM: false
         },
         HPS: {
             title: "HPS",
@@ -400,7 +360,7 @@ lang = {
         Hper: {
             title: "H%",
             ex: {
-                kr: '전체 치유량 중 내가 기여한 치유량 (%)',
+                kr: '총 치유량 중 내 캐릭터의 기여율 (%)',
                 en: 'The value represents the percent share of all healing done by allies in this encounter.'
             },
             DPS: 'block',
@@ -430,7 +390,7 @@ lang = {
         DShield: {
             title: "D.Shield",
             ex: {
-                kr: '보호막량',
+                kr: '보호막의 피해 흡수량',
                 en: 'The amount of damage blocked by shield abilities of healer.'
             },
             DPS: 'block',
@@ -450,7 +410,7 @@ lang = {
         OHEAL: {
             title: "O.HEAL",
             ex: {
-                kr: '치유 초과율 (%)',
+                kr: '초과 치유율 (%)',
                 en: 'The percentage of heals above target\'s Max HP.'
             },
             DPS: 'block',
@@ -497,20 +457,30 @@ lang = {
             HPS: false,
             BM: false
         },
-        Dispel: {
-            title: "Dispel",
+        DTaken: {
+            title: "D.Taken",
             ex: {
-                kr: '디버프 해제 기술 시전 횟수',
-                en: 'The number of times the combatant dispelled.'
+                kr: '받은 피해량',
+                en: 'The amount of damage this combatant received.'
             },
-            DPS: 'block',
-            HPS: false,
+            DPS: false,
+            HPS: 'block',
+            BM: false
+        },
+        HTaken: {
+            title: "H.Taken",
+            ex: {
+                kr: '받은 치유량',
+                en: 'The amount of healing this combatant received.'
+            },
+            DPS: false,
+            HPS: 'block',
             BM: false
         },
         Absorb: {
-            title: "Absorb",
+            title: "HP",
             ex: {
-                kr: '기술 시전을 통한 HP 보충량 (최후의 일격 등)',
+                kr: '기술을 통한 HP 회복량',
                 en: 'The amount of power this combatant drained from others.<br>(ex. Mercy Stroke etc)'
             },
             DPS: false,
@@ -518,12 +488,42 @@ lang = {
             BM: false
         },
         Replenish: {
-            title: "Replenish",
+            title: "MP",
             ex: {
-                kr: '기술 시전을 통한 MP 보충량 (에테르 흡수 등)',
+                kr: '기술을 통한 MP 회복량',
                 en: 'The amount of power this combatant replenished to others.<br>(ex. Aetherflow etc)'
             },
             DPS: false,
+            HPS: false,
+            BM: false
+        },
+        PARRY: {
+            title: "PARRY",
+            ex: {
+                kr: '받아넘기기 발동률 (%)',
+                en: 'The percentage of hits that were parried.'
+            },
+            DPS: false,
+            HPS: 'block',
+            BM: false
+        },
+        BLOCK: {
+            title: "BLOCK",
+            ex: {
+                kr: '방패막기 발동률 (%)',
+                en: 'The percentage of hits that were blocked.'
+            },
+            DPS: false,
+            HPS: 'block',
+            BM: false
+        },
+        Dispel: {
+            title: "Dispel",
+            ex: {
+                kr: '디버프 해제 기술 시전 횟수',
+                en: 'The number of times the combatant dispelled.'
+            },
+            DPS: 'block',
             HPS: false,
             BM: false
         },
