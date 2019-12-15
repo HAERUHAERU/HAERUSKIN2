@@ -247,9 +247,9 @@ function mergedData(p, o, e) {
     if (o.MaxHitVal == 0 && p.MaxHitVal == 0) {
         o.MaxHitStr = "";
         o.MaxHitVal = 0;
-    } else if (o.MaxHitVal <= p.MaxHitVal) {
+    } else if (parseInt(o.MaxHitVal).nanFix() <= parseInt(p.MaxHitVal).nanFix()) {
         o.MaxHitStr = p.MaxHitStr;
-        o.MaxHitVal = p.MaxHitVal;
+        o.MaxHitVal = parseInt(p.MaxHitVal).nanFix();
     }
 
     o.Healed = parseInt(o.Healed + p.Healed).nanFix();
@@ -267,9 +267,9 @@ function mergedData(p, o, e) {
     if (o.MaxHealVal == 0 && p.MaxHealVal == 0) {
         o.MaxHealStr = "";
         o.MaxHealVal = 0;
-    } else if (o.MaxHealVal <= p.MaxHealVal) {
+    } else if (parseInt(o.MaxHealVal).nanFix() <= parseInt(p.MaxHealVal).nanFix()) {
         o.MaxHealStr = p.MaxHealStr;
-        o.MaxHealVal = p.MaxHealVal;
+        o.MaxHealVal = parseInt(p.MaxHealVal).nanFix();
     }
 
     o.Dispel = parseInt(o.Dispel + p.Dispel).nanFix();
