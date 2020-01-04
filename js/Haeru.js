@@ -45,6 +45,7 @@ $(document).ready(function() {
     swapLang(localStorage.getItem("lang"));
     $('#wrap').css('height', 'calc(100% - ' + ($('.navbar-fixed').height() / 10 - 0.1) + 'rem)')
     $('#data font, #menuTable td div').css('color', lang['thema'][localStorage.getItem('thema')].color);
+    $('.nav,.tableHeader').css('background', bgColor());
 });
 $('.nav').on({
     mouseover: function() {
