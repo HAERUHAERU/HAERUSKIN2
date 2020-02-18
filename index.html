@@ -14,6 +14,9 @@
                     <td id="data">
                         <div></div>
                     </td>
+                    <td id="screenshot" onclick="Button(this.id)">
+                        <img src="images/ui/camera.svg" />
+                        <input type="checkbox" /></td>
                     <td id="end" onclick="Button(this.id)">
                         <img src="images/ui/timer.svg" /></td>
                     <td id="history" onclick="viewTab(this.id, 0); Button(this.id)">
@@ -148,6 +151,7 @@
                 <div id="editBody">
                 </div>
             </div>
+            <div id="toast"></div>
         </div>
     </div>
     <script src="js/jquery-2.1.1.min.js" type="text/javascript"></script>
