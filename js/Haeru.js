@@ -1,8 +1,24 @@
+let removeToast;
+
+function toast(string) {
+    const toast = document.getElementById("toast");
+
+    toast.classList.contains("reveal") ?
+        (clearTimeout(removeToast), removeToast = setTimeout(function() {
+            document.getElementById("toast").classList.remove("reveal")
+        }, 3000)) :
+        removeToast = setTimeout(function() {
+            document.getElementById("toast").classList.remove("reveal")
+        }, 3000)
+    toast.classList.add("reveal"),
+        toast.innerText = string
+}
+
 var lastData = null,
     lastDPS = null,
     lastHPS = null,
     langFlag = '',
-    list = '';
+    list = '';ㅃ
 var barSize = [];
 var encounterArray = [];
 var encounterCount = 1;
@@ -143,6 +159,10 @@ function Button(id, num) {
         $(this).removeClass('pulse animated');
     });
     switch (id) {
+        case 'screenshot':
+            window.OverlayPluginApi.makeScreenshot();
+            toast("스크린샷은 Advanced Combat Tracker > ScreenShot 폴더에서 확인할 수 있습니다.")
+            break;
         case 'menu':
             if ($('#' + id).find('input').prop('checked') == false) {
                 $('#' + id).find('input').prop('checked', true);
