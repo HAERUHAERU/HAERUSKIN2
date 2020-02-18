@@ -126,6 +126,7 @@ input[type="checkbox"] {
 #menu:hover,
 #end:hover,
 #history:hover,
+#screenshot:hover,
 .tablebody.edit td.cell_2:hover {
     background: rgba(0, 0, 0, 0.25);
     cursor: pointer;
@@ -144,6 +145,7 @@ input[type="checkbox"] {
 
 #menu,
 #end,
+#screenshot,
 #history {
     width: 4.5rem;
     text-align: center;
@@ -343,4 +345,30 @@ input[type="checkbox"] {
 
 .cell_5 {
     width: 4rem;
+}
+
+
+/* Toast */
+
+#toast {
+    position: fixed;
+    bottom: 3rem;
+    left: 50%;
+    padding: 1.5rem 2rem;
+    transform: translate(-50%, 10rem);
+    border-radius: 3rem;
+    overflow: hidden;
+    font-size: 1.4rem;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity .5s, visibility .5s, transform .5s;
+    background: rgba(0, 0, 0, .35);
+    color: #fff;
+    z-index: 10000;
+}
+
+#toast.reveal {
+    opacity: 1;
+    visibility: visible;
+    transform: translate(-50%, 0)
 }
