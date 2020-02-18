@@ -18,7 +18,8 @@ var lastData = null,
     lastDPS = null,
     lastHPS = null,
     langFlag = '',
-    list = '';ㅃ
+    list = '';
+
 var barSize = [];
 var encounterArray = [];
 var encounterCount = 1;
