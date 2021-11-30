@@ -540,6 +540,8 @@ function graphColor(Job, Name) {
                 return '#32307B'
             case 'AST':
                 return '#B1561C'
+            case 'SGE':
+                return '#85C4D4'
             case 'MNK':
             case 'PGL':
             case "PUG":
@@ -552,6 +554,8 @@ function graphColor(Job, Name) {
                 return '#EE2E48'
             case 'SAM':
                 return '#E45A0F'
+            case 'RPR':
+                return '#3A3A35'
             case 'BLM':
             case 'THM':
                 return '#674598'
@@ -597,6 +601,8 @@ function graphColor(Job, Name) {
                 return '#b8b8d4'
             case 'AST':
                 return '#e5b99d'
+            case 'SGE':
+                return '#a5d5e1'
             case 'MNK':
             case 'PGL':
             case "PUG":
@@ -609,6 +615,8 @@ function graphColor(Job, Name) {
                 return '#fbc1b3'
             case 'SAM':
                 return '#fec983'
+            case 'RPR':
+                return '#55554d'
             case 'BLM':
             case 'THM':
                 return '#c9b8da'
@@ -647,6 +655,7 @@ function graphColor(Job, Name) {
             case 'CNJ':
             case 'SCH':
             case 'AST':
+            case 'SGE':
                 return '#467837'
             case 'MNK':
             case 'PGL':
@@ -654,6 +663,7 @@ function graphColor(Job, Name) {
             case 'DRG':
             case 'LNC':
             case 'SAM':
+            case 'RPR':
             case 'BLM':
             case 'THM':
             case 'SMN':
@@ -706,6 +716,8 @@ function graphColor(Job, Name) {
                 return '#fdab9f'
             case 'AST':
                 return '#f2b8c6'
+            case 'SGE':
+                return '#dd90c0'
             case 'MNK':
             case 'PGL':
             case "PUG":
@@ -718,6 +730,8 @@ function graphColor(Job, Name) {
                 return '#fc46aa'
             case 'SAM':
                 return '#fe5da9'
+            case 'RPR':
+                return '#daaae3'
             case 'BLM':
             case 'THM':
                 return '#f25278'
