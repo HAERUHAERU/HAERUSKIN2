@@ -20,7 +20,7 @@ function LastHaeruData(e, sortkey) {
         var a = this.Combatant[i].merged;
         if (a.Job == "AVA" || a.Job == "CBO") {
             tmp.push(a.petOwner);
-        } else if (a.Job == "SMN" || a.Job == "MCH" || a.Job == "SCH") {
+        } else if (a.Job == "SMN" || a.Job == "MCH" || a.Job == "SCH" || a.Job == "DRK" || a.Job == "NIN" || a.Job == "AST") {
             tmp.push(a.Name);
         }
     }
