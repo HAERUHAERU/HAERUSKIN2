@@ -85,9 +85,9 @@ function HaeruData(d, e) {
             "데미바하무트", "デミ・バハムート", "亚灵神巴哈姆特", "Demi-Bahamut", "デミ・フェニックス",
             "데미피닉스", "Demi-Phönix", "Demi-Phénix", "Demi-Phoenix", "亚灵神不死鸟"
         ];
-        var mchPetsList = ["자동포탑 룩", "オートタレット・ルーク", "车式浮空炮塔", "Selbstschuss-Gyrocopter Turm", "Auto-tourelle Tour", "Rook Autoturret",
-            "자동포탑 비숍", "オートタレット・ビショップ", "象式浮空炮塔", "Selbstschuss-Gyrocopter Läufer", "Auto-tourelle Fou", "Bishop Autoturret",
-            "オートマトン・クイーン", "Automaton Dame", "Automate Reine", "Automaton Queen", "后式自走人偶", "자동인형 퀸"
+        var mchPetsList = ["자동포탑 룩", "オートタレット・ルーク", "车式浮空炮塔", "Selbstschuss-Gyrocopter TURM", "Auto-tourelle Tour", "Rook Autoturret",
+            "자동포탑 비숍", "オートタレット・ビショップ", "象式浮空炮塔", "Selbstschuss-Gyrocopter LÄUFER", "Auto-tourelle Fou", "Bishop Autoturret",
+            "オートマトン・クイーン", "Automaton DAME", "Automate Reine", "Automaton Queen", "后式自走人偶", "자동인형 퀸"
         ];
         var schPetsList = ["요정 에오스", "フェアリー・エオス", "朝日小仙女", "Eos",
             "요정 셀레네", "フェアリー・セレネ", "夕月小仙女", "Selene",
@@ -128,6 +128,11 @@ function HaeruData(d, e) {
         } else if (astPetsList.indexOf(petsName) > -1) {
             this.Job = "AVA";
             this.Class = "AST";
+            if (matches != null)
+                this.petOwner = matches[1];
+        } else if (whmPetsList.indexOf(petsName) > -1) {
+            this.Job = "AVA";
+            this.Class = "WHM";
             if (matches != null)
                 this.petOwner = matches[1];
         } else if (d.name.indexOf("(") > -1) {
@@ -252,7 +257,6 @@ function mergedData(p, o, e) {
         o.MaxHitStr = p.MaxHitStr;
         o.MaxHitVal = parseInt(p.MaxHitVal).nanFix();
     }
-
     o.Healed = parseInt(o.Healed + p.Healed).nanFix();
     o.HPS = parseFloat(o.Healed / e.DURATION).nanFix();
     o.Hper = parseFloat((o.Healed / e.healed) * 100).nanFix();
