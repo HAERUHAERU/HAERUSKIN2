@@ -20,7 +20,7 @@ function LastHaeruData(e, sortkey) {
         var a = this.Combatant[i].merged;
         if (a.Job == "AVA" || a.Job == "CBO") {
             tmp.push(a.petOwner);
-        } else if (a.Job == "SMN" || a.Job == "MCH" || a.Job == "SCH" || a.Job == "DRK" || a.Job == "NIN" || a.Job == "AST") {
+        } else if (a.Job == "SMN" || a.Job == "MCH" || a.Job == "SCH" || a.Job == "DRK" || a.Job == "NIN" || a.Job == "AST" || a.Job == "WHM") {
             tmp.push(a.Name);
         }
     }
@@ -96,6 +96,7 @@ function HaeruData(d, e) {
         var drkPetsList = ["영웅의 환영", "英雄の影身", "Hochachtung", "Estime", "Esteem", "英雄的掠影"];
         var ninPetsList = ["分身", "Gedoppeltes Ich", "Ombre", "Bunshin", "분신"];
         var astPetsList = ["지상의 별", "アーサリースター", "地星", "Earthly Star", "Étoile terrestre", "Irdischer Stern"];
+        var whmPetsList = ["Liturgy of the Bell", "リタージー・オブ・ベル", "Tintinnabule", "Verbesserter Göttlicher Segen"];
 
         var petsName = d.name.split(' (')[0];
 
