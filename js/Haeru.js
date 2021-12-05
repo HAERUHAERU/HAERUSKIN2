@@ -555,7 +555,7 @@ function graphColor(Job, Name) {
             case 'SAM':
                 return '#E45A0F'
             case 'RPR':
-                return '#3A3A35'
+                return '#EADD6F'
             case 'BLM':
             case 'THM':
                 return '#674598'
@@ -616,7 +616,7 @@ function graphColor(Job, Name) {
             case 'SAM':
                 return '#fec983'
             case 'RPR':
-                return '#55554d'
+                return '#f2e896'
             case 'BLM':
             case 'THM':
                 return '#c9b8da'
