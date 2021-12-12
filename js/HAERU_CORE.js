@@ -147,6 +147,10 @@ function HaeruData(d, e) {
             this.Job = "LMB";
             this.Class = "LMB";
         }
+    } else if (d.Job == "Limit Break") {
+        //글섭 6.0
+        this.Job = "LMB";
+        this.Class = "LMB";
     } else {
         if (d.Job != undefined) {
             this.Job = d.Job.toUpperCase();
