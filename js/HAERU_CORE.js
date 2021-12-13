@@ -86,7 +86,7 @@ function HaeruData(d, e) {
             "데미피닉스", "Demi-Phönix", "Demi-Phénix", "Demi-Phoenix", "亚灵神不死鸟",
             "Ruby Ifrit", "Ifrit rubis", "Rubin-Ifrit", "イフリート・ルビー",
             "Topaz Titan", "Titan topaze", "Topas-Titan", "タイタン・トパーズ",
-            "Emerald Garuda", "Garuda émeraude", "Smaragd-Garuda", "ガルーダ・エメラルド,
+            "Emerald Garuda", "Garuda émeraude", "Smaragd-Garuda", "ガルーダ・エメラルド",
             "카벙클", "カーバンクル", "Karfunkel", "Carbuncle", "宝石兽"
         ];
         var mchPetsList = ["자동포탑 룩", "オートタレット・ルーク", "车式浮空炮塔", "Selbstschuss-Gyrocopter TURM", "Auto-tourelle Tour", "Rook Autoturret",
