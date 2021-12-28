@@ -20,7 +20,7 @@ function LastHaeruData(e, sortkey) {
         var a = this.Combatant[i].merged;
         if (a.Job == "AVA" || a.Job == "CBO") {
             tmp.push(a.petOwner);
-        } else if (a.Job == "SMN" || a.Job == "MCH" || a.Job == "SCH" || a.Job == "DRK" || a.Job == "NIN" || a.Job == "AST" || a.Job == "WHM") {
+        } else if (a.Job == "SMN" || a.Job == "MCH" || a.Job == "SCH" || a.Job == "DRK" || a.Job == "NIN" || a.Job == "AST" || a.Job == "WHM" || a.Job =="SGE") {
             tmp.push(a.Name);
         }
     }
@@ -101,6 +101,7 @@ function HaeruData(d, e) {
         var ninPetsList = ["分身", "Gedoppeltes Ich", "Ombre", "Bunshin", "분신"];
         var astPetsList = ["지상의 별", "アーサリースター", "地星", "Earthly Star", "Étoile terrestre", "Irdischer Stern"];
         var whmPetsList = ["Liturgic Bell", "liturgic bell", "リタージー・オブ・ベル", "Tintinnabule", "tintinnabule", "Glockenspiel"];
+        var sgePetsList = ["ペプシス", "Pepsis"];    
 
         var petsName = d.name.split(' (')[0];
 
@@ -137,6 +138,11 @@ function HaeruData(d, e) {
         } else if (whmPetsList.indexOf(petsName) > -1) {
             this.Job = "AVA";
             this.Class = "WHM";
+            if (matches != null)
+                this.petOwner = matches[1];
+        } else if (sgePetsList.indexOf(petsName) > -1) {
+            this.Job = "AVA";
+            this.Class = "SGE";
             if (matches != null)
                 this.petOwner = matches[1];
         } else if (d.name.indexOf("(") > -1) {
