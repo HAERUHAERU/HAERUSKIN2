@@ -1,5 +1,23 @@
 let removeToast;
 
+var lastData = null,
+    lastDPS = null,
+    lastHPS = null,
+    langFlag = '',
+    list = '';
+
+var barSize = [];
+var encounterArray = [];
+var encounterCount = 1;
+
+addOverlayListener("CombatData", (e) => {
+    lastData = e;
+    update();
+    saveLog(); 
+});
+
+startOverlayEvents();
+
 function toast(string) {
     const toast = document.getElementById("toast");
 
@@ -14,15 +32,6 @@ function toast(string) {
         toast.innerText = string
 }
 
-var lastData = null,
-    lastDPS = null,
-    lastHPS = null,
-    langFlag = '',
-    list = '';
-
-var barSize = [];
-var encounterArray = [];
-var encounterCount = 1;
 $(document).ready(function() {
     //localStorage.clear();
     var value = {
@@ -262,11 +271,6 @@ function Button(id, num) {
             break;
     }
 }
-document.addEventListener("onOverlayDataUpdate", function(e) {
-    lastData = e.detail;
-    update();
-    saveLog();
-});
 
 function update() {
     if (lastData === null) return;
@@ -311,7 +315,8 @@ function onCombatDataUpdate(flag) {
         for (var d in last.Combatant) {
             var a = last.Combatant[d].merged;
             var b = last.Combatant[d].Haeru;
-            if (localStorage.getItem('pets') == 1 && a.Job == 'AVA' || a.Job == '' || a.Job == 'error') {} else {
+            if (localStorage.getItem('pets') == 1 && a.Job == 'AVA' || a.Job == '' || a.Job == 'error') {} 
+            else {
                 inputGraph(last.maxDamage, a, b, flag);
             }
         }
@@ -470,6 +475,7 @@ function inputGraph(maxDamage, a, b, flag) {
         var overheal = Math.min(100, parseInt((a.OverHeal / maxDamage) * 100))
         var shield = Math.min(100, parseInt((a.DShield / maxDamage) * 100))
     }
+
     graphAnimate(userWidth, 'bar', '', flag, userName)
 
     if (localStorage.getItem('pets') == 1) {
@@ -517,6 +523,7 @@ function graphAnimate(width, bar, category, flag, userName) {
     }
     $('#' + flag + 'Body').find('#' + userName).find('.' + bar).animate({ width: width + '%' });
     barSize[userName + category + flag] = width;
+    preWidth = width;
 }
 
 function graphColor(Job, Name) {
@@ -792,7 +799,7 @@ function saveLog() {
                     encounterArray.shift()
                 else historyAddRow()
             } else historyAddRow()
-            barSize = new Array(); //초기화            
+            //barSize = new Array(); //20220420 그래프가 계속 초기화되는 문제로 수정            
         }
     }
 }
