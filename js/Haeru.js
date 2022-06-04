@@ -9,11 +9,22 @@ var lastData = null,
 var barSize = [];
 var encounterArray = [];
 var encounterCount = 1;
+var init = false;
 
 addOverlayListener("CombatData", (e) => {
-    lastData = e;
-    update();
-    saveLog(); 
+    if (e.isActive == "true") {
+        lastData = e;
+        update();
+        init = true;
+    }
+    else {
+        if (init) {
+            lastData = e;
+            update();
+            saveLog();
+        }
+        init = false;
+    }
 });
 
 startOverlayEvents();
@@ -22,17 +33,17 @@ function toast(string) {
     const toast = document.getElementById("toast");
 
     toast.classList.contains("reveal") ?
-        (clearTimeout(removeToast), removeToast = setTimeout(function() {
+        (clearTimeout(removeToast), removeToast = setTimeout(function () {
             document.getElementById("toast").classList.remove("reveal")
         }, 3000)) :
-        removeToast = setTimeout(function() {
+        removeToast = setTimeout(function () {
             document.getElementById("toast").classList.remove("reveal")
         }, 3000)
     toast.classList.add("reveal"),
         toast.innerText = string
 }
 
-$(document).ready(function() {
+$(document).ready(function () {
     //localStorage.clear();
     var value = {
         lang: 1,
@@ -74,17 +85,17 @@ $(document).ready(function() {
     $('.nav,.tableHeader').css('background', bgColor());
 });
 $('.nav').on({
-    mouseover: function() {
+    mouseover: function () {
         $('.nav,.tableHeader').css('background', 'rgba(26,26,26,1)');
     },
-    mouseleave: function() {
+    mouseleave: function () {
         if ($('#menu').find('input').prop('checked') == true || $('#edit div').html() == '★')
             $('.nav,.tableHeader').css('background', 'rgba(26,26,26,1)');
         else
             $('.nav,.tableHeader').css('background', bgColor())
     }
 });
-$(window).resize(function() {
+$(window).resize(function () {
     $('#wrap').css('height', 'calc(100% - ' + ($('.navbar-fixed').height() / 10 - 0.1) + 'rem)')
 });
 
@@ -104,7 +115,7 @@ function swapLang(val) {
         } else {
             if (i == 'size' || i == 'opacity' || i == 'lang')
                 $('#' + i).find('div').text(lang[i][localStorage.getItem(i)]);
-            else if (i == 'DPS' || i == 'HPS' || i == 'BM' || i == 'edit') {} else if (i == 'elements')
+            else if (i == 'DPS' || i == 'HPS' || i == 'BM' || i == 'edit') { } else if (i == 'elements')
                 createEditTable()
             else
                 $('#' + i).find('div').text(lang[i][localStorage.getItem(i)][langFlag]);
@@ -151,7 +162,7 @@ function createEditTable() {
         html += div;
     }
     $('#editBody').html(html)
-    $('.tablebody.edit td.cell_2').on('click', function() {
+    $('.tablebody.edit td.cell_2').on('click', function () {
         var key = $(this).parent().parent().parent().parent().attr('id')
         if ($(this).find('img').attr('src').split('_')[1] == 'true.svg') {
             list[key][$(this).attr('name')] = false
@@ -159,13 +170,13 @@ function createEditTable() {
         } else if ($(this).find('img').attr('src').split('_')[1] == 'false.svg') {
             list[key][$(this).attr('name')] = true
             $(this).find('img').attr('src', 'images/ui/check_true.svg');
-        } else {}
+        } else { }
         localStorage.setItem('list', JSON.stringify(list))
     });
 }
 
 function Button(id, num) {
-    $('#' + id + ' img').removeClass('pulse animated').addClass('pulse animated').one('animationend', function() {
+    $('#' + id + ' img').removeClass('pulse animated').addClass('pulse animated').one('animationend', function () {
         $(this).removeClass('pulse animated');
     });
     switch (id) {
@@ -302,7 +313,7 @@ function onCombatDataUpdate(flag) {
         var newBody = document.createElement("div");
         for (var d in last.Combatant) {
             var a = last.Combatant[d].merged;
-            if (localStorage.getItem('pets') == 1 && a.Job == 'AVA' || a.Job == '' || a.Job == 'error') {} else {
+            if (localStorage.getItem('pets') == 1 && a.Job == 'AVA' || a.Job == '' || a.Job == 'error') { } else {
                 createTableBody(newBody, a);
                 party++;
                 if (a.Name == "YOU")
@@ -315,7 +326,7 @@ function onCombatDataUpdate(flag) {
         for (var d in last.Combatant) {
             var a = last.Combatant[d].merged;
             var b = last.Combatant[d].Haeru;
-            if (localStorage.getItem('pets') == 1 && a.Job == 'AVA' || a.Job == '' || a.Job == 'error') {} 
+            if (localStorage.getItem('pets') == 1 && a.Job == 'AVA' || a.Job == '' || a.Job == 'error') { }
             else {
                 inputGraph(last.maxDamage, a, b, flag);
             }
@@ -857,18 +868,20 @@ function historyAddRow() {
     else wrap.insertBefore(newHistory, oldHistory);
     newHistory.id = 'historyoldBody';
     $('#historyoldBody').on({
-        mouseover: function() {
+        mouseover: function () {
             $(this).find('.barBg').css('background', lang.thema[localStorage.getItem('thema')].color)
         },
-        mouseleave: function() {
+        mouseleave: function () {
             $(this).find('.barBg').css('background', bgColor())
         },
-        click: function() {
+        click: function () {
             $('#historyBody').find('td#viewIcon').html('');
             var listName = $(this).find('table').attr("id");
             for (var i in encounterArray) {
                 if (listName == encounterArray[i].combatKey) {
                     lastData = encounterArray[i].lastData;
+                    lastDPS = new LastHaeruData(lastData, 'DPS');
+                    lastHPS = new LastHaeruData(lastData, 'HPS');
                     $(this).find('#viewIcon').html('<img src="./images/ui/eye.svg" style="width:1.5rem"/>');
                     $('#DPSBody').html('<div id="DPSoldBody"></div>');
                     $('#HPSBody').html('<div id="HPSoldBody"></div>');
