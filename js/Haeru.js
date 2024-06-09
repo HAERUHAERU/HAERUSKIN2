@@ -574,6 +574,8 @@ function graphColor(Job, Name) {
                 return '#E45A0F'
             case 'RPR':
                 return '#EADD6F'
+            case 'VIP':
+                return '#863E25'
             case 'BLM':
             case 'THM':
                 return '#674598'
@@ -582,6 +584,8 @@ function graphColor(Job, Name) {
                 return '#32670B'
             case 'RDM':
                 return '#AC2997'
+            case 'PIC':
+                return '#D36A6D'
             case 'BLU':
                 return '#183D9A'
             case 'BRD':
@@ -635,6 +639,8 @@ function graphColor(Job, Name) {
                 return '#fec983'
             case 'RPR':
                 return '#f2e896'
+            case 'VIP':
+                return '#dca08c'
             case 'BLM':
             case 'THM':
                 return '#c9b8da'
@@ -643,6 +649,8 @@ function graphColor(Job, Name) {
                 return '#82c99d'
             case 'RDM':
                 return '#f7bdcb'
+            case 'PIC':
+                return '#df989a'
             case 'BLU':
                 return '#4db3fd'
             case 'BRD':
@@ -682,11 +690,13 @@ function graphColor(Job, Name) {
             case 'LNC':
             case 'SAM':
             case 'RPR':
+            case 'VIP':
             case 'BLM':
             case 'THM':
             case 'SMN':
             case 'ACN':
             case 'RDM':
+            case 'PIC':
             case 'BLU':
             case 'BRD':
             case 'ARC':
@@ -750,6 +760,8 @@ function graphColor(Job, Name) {
                 return '#fe5da9'
             case 'RPR':
                 return '#daaae3'
+            case 'VIP':
+                return '#dc8caa'
             case 'BLM':
             case 'THM':
                 return '#f25278'
@@ -758,6 +770,8 @@ function graphColor(Job, Name) {
                 return '#f26b8b'
             case 'RDM':
                 return '#f69abf'
+            case 'PIC':
+                return '#df989a'
             case 'BLU':
                 return '#ec8fa5'
             case 'BRD':
